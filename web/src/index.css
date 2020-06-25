@@ -1,0 +1,13 @@
+body, body {
+  font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  background-color: #1e1e1e;
+  color: #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  height: calc(100 * var(--vh));
+}
