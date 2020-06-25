@@ -21,7 +21,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
   return (
     <Wrapper>
       {children}
-      <BottomNavigation value={currentPage} onChange={handleChange}>
+      <BottomNavigation value={currentPage} onChange={handleChange} showLabels>
         <BottomNavigationAction label="Time Tracking" value="timeTracking" icon={<TimerIcon />} />
         <BottomNavigationAction label="Receipts" value="receipts" icon={<ReceiptIcon />} />
       </BottomNavigation>
@@ -39,6 +39,21 @@ const Wrapper = styled.main`
 
   > :last-child {
     margin-top: auto;
+  }
+
+  .MuiBottomNavigation-root {
+    background-color: #161a2f;
+  }
+
+  .MuiBottomNavigationAction-root {
+    color: #dbdbdb;
+    opacity: 0.7;
+    transition: 0.25s;
+  }
+
+  .MuiBottomNavigationAction-root.Mui-selected {
+    color: #dbdbdb;
+    opacity: 1;
   }
 `;
 
