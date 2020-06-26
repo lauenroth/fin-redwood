@@ -42,11 +42,11 @@ const Wrapper = styled.main`
   }
 
   .MuiBottomNavigation-root {
-    background-color: #161a2f;
+    background-color: rgba(45, 55, 72, 0.6);
   }
 
   .MuiBottomNavigationAction-root {
-    color: #dbdbdb;
+    color: #a0aec0;
     opacity: 0.7;
     transition: 0.25s;
   }

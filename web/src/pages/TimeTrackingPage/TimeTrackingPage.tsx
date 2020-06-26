@@ -1,37 +1,37 @@
 import styled, { css } from 'styled-components';
+import Box from 'src/components/Box';
 import MainLayout from 'src/layouts/MainLayout';
 
-const tracking = [6, 7, 7, 4, 0];
+const tracking = [6, 7, 7, 6, 5];
 const days = ['M', 'T', 'W', 'T', 'F'];
 
 const TimeTrackingPage = () => {
   return (
     <MainLayout>
-      <WeekWrapper>
-        <Week>
-          {tracking.map((time, index) => (
-            <li key={`week-${index}`}>
-              <Hours time={time} isToday>
-                {time > 0 && <span>{time}h</span>}
-              </Hours>{' '}
-              {days[index]}
-            </li>
-          ))}
-        </Week>
-        <Total>
-          <div>{tracking.reduce((acc, val) => acc + val, 0)}h</div>
-          Total
-        </Total>
-      </WeekWrapper>
+      <Box title="Week 22. - 26.6.">
+        <WeekWrapper>
+          <Week>
+            {tracking.map((time, index) => (
+              <li key={`week-${index}`}>
+                <Hours time={time} isToday>
+                  {time > 0 && <span>{time}h</span>}
+                </Hours>{' '}
+                {days[index]}
+              </li>
+            ))}
+          </Week>
+          <Total>
+            <div>{tracking.reduce((acc, val) => acc + val, 0)}h</div>
+            Total
+          </Total>
+        </WeekWrapper>
+      </Box>
     </MainLayout>
   );
 };
 
 const WeekWrapper = styled.section`
-  background-color: #161a2f;
   display: grid;
-  margin: 15px;
-  padding: 15px;
   grid-template-columns: 6fr 1fr;
 `;
 
@@ -90,10 +90,10 @@ const Total = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  height: 70px;
+  height: 65px;
   justify-content: center;
-  margin: auto;
-  width: 70px;
+  /* margin: auto; */
+  width: 65px;
 
   div {
     font-size: 18px;
