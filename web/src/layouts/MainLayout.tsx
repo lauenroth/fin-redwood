@@ -23,7 +23,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
       {children}
       <BottomNavigation value={currentPage} onChange={handleChange} showLabels>
         <BottomNavigationAction label="Time Tracking" value="timeTracking" icon={<TimerIcon />} />
-        <BottomNavigationAction label="Receipts" value="receipts" icon={<ReceiptIcon />} />
+        <BottomNavigationAction label="Transactions" value="receipts" icon={<ReceiptIcon />} />
       </BottomNavigation>
     </Wrapper>
   );
@@ -56,5 +56,15 @@ const Wrapper = styled.main`
     opacity: 1;
   }
 `;
+
+const MainHeader = styled.header`
+  h1 {
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+  }
+`;
+
+export { MainHeader };
 
 export default MainLayout;
