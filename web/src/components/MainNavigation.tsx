@@ -11,7 +11,7 @@ import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import TuneIcon from '@material-ui/icons/Tune';
 import TimerIcon from '@material-ui/icons/Timer';
-import ReceiptIcon from '@material-ui/icons/Receipt';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 interface Props {
@@ -24,11 +24,7 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
     query: '(max-device-width: 1224px)',
   });
 
-  const path = window.location.pathname.substr(1);
-  const [currentPage, setCurrentPage] = React.useState(path.length ? path : 'timeTracking');
-
   const handleChange = (event: React.ChangeEvent<{}>, newPage: string) => {
-    setCurrentPage(newPage);
     navigate(routes[newPage]());
   };
 
@@ -41,17 +37,20 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
       onClose={() => setShowNavigation(false)}
     >
       <List>
+        <ListItem button onClick={event => handleChange(event, 'dashboard')}>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
         <ListItem button onClick={event => handleChange(event, 'transactions')}>
           <ListItemIcon>
             <AccountBalanceIcon />
           </ListItemIcon>
           <ListItemText primary="Transactions" />
-        </ListItem>
-        <ListItem button onClick={event => handleChange(event, 'receipts')}>
-          <ListItemIcon>
-            <ReceiptIcon />
-          </ListItemIcon>
-          <ListItemText primary="Receipts" />
         </ListItem>
         <ListItem button onClick={event => handleChange(event, 'timeTracking')}>
           <ListItemIcon>
