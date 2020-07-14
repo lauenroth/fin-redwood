@@ -4,12 +4,12 @@
   "icons": [
     {
       "src": "/images/finances-240.png",
-      "sizes": "96x96 128x128 192x192 240x240",
+      "sizes": "96x96 128x128 192x192 240x240 512x512",
       "type": "image/png"
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#2e3848",
-  "background_color": "#999"
+  "background_color": "#2e3848"
 }
