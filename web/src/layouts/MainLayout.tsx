@@ -164,4 +164,14 @@ const Wrapper = styled.main<{ isMobile: boolean }>`
   `}
 `;
 
+const MainHeader = styled.header`
+  h1 {
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+  }
+`;
+
+export { MainHeader };
+
 export default MainLayout;
