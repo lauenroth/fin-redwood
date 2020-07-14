@@ -56,65 +56,63 @@ const MainLayout: React.FC<Props> = ({ children, title }) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      {!isTabletOrMobileDevice && (
-        <SwipeableDrawer
-          // variant="permanent"
-          open={showNavigation}
-          onOpen={() => setShowNavigation(true)}
-          onClose={() => setShowNavigation(false)}
-        >
-          <div>
-            <IconButton>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            <ListItem button onClick={event => handleChange(event, 'transactions')}>
-              <ListItemIcon>
-                <AccountBalanceIcon />
-              </ListItemIcon>
-              <ListItemText primary="Transactions" />
-            </ListItem>
-            <ListItem button onClick={event => handleChange(event, 'receipts')}>
-              <ListItemIcon>
-                <ReceiptIcon />
-              </ListItemIcon>
-              <ListItemText primary="Receipts" />
-            </ListItem>
-            <ListItem button onClick={event => handleChange(event, 'timeTracking')}>
-              <ListItemIcon>
-                <TimerIcon />
-              </ListItemIcon>
-              <ListItemText primary="Time Tracking" />
-            </ListItem>
-          </List>
-          <Divider />
-          <List>
-            <ListItem button onClick={event => handleChange(event, 'clients')}>
-              <ListItemIcon>
-                <PermContactCalendarIcon />
-              </ListItemIcon>
-              <ListItemText primary="Clients" />
-            </ListItem>
-            <ListItem disabled>
-              <ListItemIcon>
-                <TrendingUpIcon />
-              </ListItemIcon>
-              <ListItemText primary="Statistics" />
-            </ListItem>
-          </List>
-          <Divider />
-          <List>
-            <ListItem button onClick={event => handleChange(event, 'settings')}>
-              <ListItemIcon>
-                <TuneIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
-          </List>
-        </SwipeableDrawer>
-      )}
+      <SwipeableDrawer
+        // variant="permanent"
+        open={showNavigation}
+        onOpen={() => setShowNavigation(true)}
+        onClose={() => setShowNavigation(false)}
+      >
+        <div>
+          <IconButton>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          <ListItem button onClick={event => handleChange(event, 'transactions')}>
+            <ListItemIcon>
+              <AccountBalanceIcon />
+            </ListItemIcon>
+            <ListItemText primary="Transactions" />
+          </ListItem>
+          <ListItem button onClick={event => handleChange(event, 'receipts')}>
+            <ListItemIcon>
+              <ReceiptIcon />
+            </ListItemIcon>
+            <ListItemText primary="Receipts" />
+          </ListItem>
+          <ListItem button onClick={event => handleChange(event, 'timeTracking')}>
+            <ListItemIcon>
+              <TimerIcon />
+            </ListItemIcon>
+            <ListItemText primary="Time Tracking" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={event => handleChange(event, 'clients')}>
+            <ListItemIcon>
+              <PermContactCalendarIcon />
+            </ListItemIcon>
+            <ListItemText primary="Clients" />
+          </ListItem>
+          <ListItem disabled>
+            <ListItemIcon>
+              <TrendingUpIcon />
+            </ListItemIcon>
+            <ListItemText primary="Statistics" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={event => handleChange(event, 'settings')}>
+            <ListItemIcon>
+              <TuneIcon />
+            </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
+        </List>
+      </SwipeableDrawer>
       {children}
       {isTabletOrMobileDevice && (
         <BottomNavigation value={currentPage} onChange={handleChange} showLabels>
