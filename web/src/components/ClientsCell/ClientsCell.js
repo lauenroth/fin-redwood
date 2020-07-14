@@ -1,6 +1,7 @@
 import { Link, routes } from '@redwoodjs/router';
-
 import Clients from 'src/components/Clients';
+
+import LoadingSpinner from '../LoadingSpinner';
 
 export const QUERY = gql`
   query CLIENTS {
@@ -19,7 +20,7 @@ export const QUERY = gql`
   }
 `;
 
-export const Loading = () => <div>Loading...</div>;
+export const Loading = () => <LoadingSpinner />;
 
 export const Empty = () => {
   return (

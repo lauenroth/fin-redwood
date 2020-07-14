@@ -1,30 +1,3 @@
-body, body {
-  font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
-  height: 100%;
-  margin: 0;
-}
 
-#app {
-  background-color: #1a202c;
-  color: #dbdbdb;
-  display: flex;
-  flex-direction: column;
-  height: calc(100 * var(--vh));
-}
 
-.MuiDrawer-docked .MuiDrawer-paper,
-.MuiDrawer-modal .MuiDrawer-paper {
-  background-color: rgba(45, 55, 72, 0.9);
-  color: #dbdbdb;
-  width: 225px
-}
 
-.MuiDrawer-docked .MuiListItemIcon-root,
-.MuiDrawer-modal .MuiListItemIcon-root {
-  color: #dbdbdb;
-}
-
-.MuiListItemIcon-root .MuiDivider-root,
-.MuiDrawer-modal .MuiDivider-root {
-  background-color: rgba(255, 255, 255, 0.12);
-}

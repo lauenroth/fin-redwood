@@ -1,22 +1,11 @@
 import ReactDOM from 'react-dom';
 import { RedwoodProvider, FatalErrorBoundary } from '@redwoodjs/web';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from 'styled-components';
 import FatalErrorPage from 'src/pages/FatalErrorPage';
+import Theme from 'src/styles/DefaultTheme';
 
+import GlobalCss from 'src/styles/global';
 import Routes from 'src/Routes';
-
-import './index.css';
-
-const darkTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#262626',
-    },
-    secondary: {
-      main: '#369',
-    },
-  },
-});
 
 document.querySelector(':root').style.setProperty('--vh', window.innerHeight / 100 + 'px');
 window.addEventListener('resize', () => {
@@ -26,7 +15,8 @@ window.addEventListener('resize', () => {
 ReactDOM.render(
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={Theme}>
+        <GlobalCss />
         <Routes />
       </ThemeProvider>
     </RedwoodProvider>
