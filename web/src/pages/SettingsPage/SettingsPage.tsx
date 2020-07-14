@@ -2,21 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Switch from '@material-ui/core/Switch';
 import MainLayout from 'src/layouts/MainLayout';
+import { useLocalStorage } from 'src/helpers/hooks';
 
 const SettingsPage = () => {
-  const [settings, setSettings] = React.useState({
-    darkMode: true,
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings({ ...settings, [event.target.name]: event.target.checked });
-  };
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [darkMode, setDarkMode] = useLocalStorage('darkMode', prefersDarkMode);
 
   return (
     <MainLayout title="Settings" hasPadding>
       <Wrapper>
         <label htmlFor="darkmode">Dark mode</label>
-        <Switch id="darkmode" name="darkMode" checked={settings.darkMode} color="primary" onChange={handleChange} />
+        <Switch id="darkmode" checked={darkMode} color="primary" onChange={() => setDarkMode(!darkMode)} />
       </Wrapper>
     </MainLayout>
   );
