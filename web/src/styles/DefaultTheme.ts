@@ -11,7 +11,7 @@ export default {
     grey: '#DFDFDF',
     darkGrey: '#868686',
 
-    textPrimary: 'rgba(40, 40, 40, .9)',
+    textPrimary: '#dbdbdb',
     textSecondary: 'rgba(153, 153, 153, .9)',
 
     border: '#eaedf3',
