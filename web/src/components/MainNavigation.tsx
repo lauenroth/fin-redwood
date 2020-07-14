@@ -31,7 +31,7 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
   return (
     <SwipeableDrawer
       anchor={isTabletOrMobileDevice ? 'right' : 'left'}
-      // variant="permanent"
+      // variant={isTabletOrMobileDevice ? 'persistent' : 'permanent'}
       open={showNavigation}
       onOpen={() => setShowNavigation(true)}
       onClose={() => setShowNavigation(false)}

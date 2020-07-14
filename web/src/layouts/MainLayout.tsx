@@ -10,9 +10,10 @@ import MainNavigation from 'src/components/MainNavigation';
 
 interface Props {
   title: string;
+  hasPadding?: boolean;
 }
 
-const MainLayout: React.FC<Props> = ({ children, title }) => {
+const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
   const isTabletOrMobileDevice = useMediaQuery({
     query: '(max-device-width: 1224px)',
   });
@@ -20,7 +21,7 @@ const MainLayout: React.FC<Props> = ({ children, title }) => {
   const [showNavigation, setShowNavigation] = React.useState(false);
 
   return (
-    <Wrapper isMobile={isTabletOrMobileDevice}>
+    <Wrapper isMobile={isTabletOrMobileDevice} hasPadding={hasPadding}>
       <AppBar position="fixed">
         <Toolbar>
           <IconButton
@@ -40,19 +41,13 @@ const MainLayout: React.FC<Props> = ({ children, title }) => {
 
       <MainNavigation showNavigation={showNavigation} setShowNavigation={setShowNavigation} />
 
-      {children}
-      {/* {isTabletOrMobileDevice && (
-        <BottomNavigation value={currentPage} onChange={handleChange} showLabels>
-          <BottomNavigationAction label="Time Tracking" value="timeTracking" icon={<TimerIcon />} />
-          <BottomNavigationAction label="Receipts" value="receipts" icon={<ReceiptIcon />} />
-        </BottomNavigation>
-      )} */}
+      <main>{children}</main>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.main<{ isMobile: boolean }>`
-  ${({ isMobile }) => css`
+const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
+  ${({ isMobile, hasPadding }) => css`
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -61,8 +56,8 @@ const Wrapper = styled.main<{ isMobile: boolean }>`
     padding-top: ${isMobile ? '56px' : '64px'};
     width: 100%;
 
-    > :last-child {
-      margin-top: auto;
+    main {
+      padding: ${hasPadding ? '20px' : 0};
     }
 
     .show-menu {
@@ -89,10 +84,17 @@ const Wrapper = styled.main<{ isMobile: boolean }>`
       opacity: 1;
     }
 
+    .MuiFab-root,
     .MuiSpeedDial-root {
+      background-color: rgba(45, 55, 72, 0.8);
       bottom: 20px;
       position: fixed;
       right: 20px;
+    }
+
+    .MuiFab-root:hover,
+    .MuiSpeedDial-root:hover {
+      background-color: rgba(45, 55, 72, 1);
     }
   `}
 `;

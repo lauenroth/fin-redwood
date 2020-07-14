@@ -1,10 +1,11 @@
 import { Router, Route } from '@redwoodjs/router';
-import ClientsPage from 'src/pages/ClientsPage/ClientsPage';
 import DashboardPage from 'src/pages/DashboardPage/DashboardPage';
 import ReceiptsPage from 'src/pages/ReceiptsPage/ReceiptsPage';
 import SettingsPage from 'src/pages/SettingsPage/SettingsPage';
 import TimeTrackingPage from 'src/pages/TimeTrackingPage/TimeTrackingPage';
 import TransactionsPage from 'src/pages/TransactionsPage/TransactionsPage';
+
+import ClientsPage from 'src/pages/ClientsPage/ClientsPage';
 
 const Routes = () => {
   return (
@@ -15,6 +16,11 @@ const Routes = () => {
       <Route path="/time-tracking" page={TimeTrackingPage} name="timeTracking" />
       <Route path="/clients" page={ClientsPage} name="clients" />
       <Route path="/settings" page={SettingsPage} name="settings" />
+
+      <Route path="/clients/new" page={NewClientPage} name="newClient" />
+      <Route path="/clients/{id:Int}/edit" page={EditClientPage} name="editClient" />
+      <Route path="/clients/{id:Int}" page={ClientPage} name="client" />
+
       <Route notfound page={NotFoundPage} />
     </Router>
   );
