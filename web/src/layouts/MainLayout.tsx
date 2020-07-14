@@ -84,17 +84,19 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       opacity: 1;
     }
 
-    .MuiFab-root,
+    :not(.MuiSpeedDial-root) > .MuiFab-root,
     .MuiSpeedDial-root {
-      background-color: rgba(45, 55, 72, 0.8);
       bottom: 20px;
       position: fixed;
       right: 20px;
     }
 
-    .MuiFab-root:hover,
-    .MuiSpeedDial-root:hover {
-      background-color: rgba(45, 55, 72, 1);
+    .MuiFab-root:not(.MuiSpeedDialAction-fab) {
+      background-color: rgba(45, 55, 72, 0.8);
+
+      &:hover {
+        background-color: rgba(45, 55, 72, 1);
+      }
     }
   `}
 `;
