@@ -12,7 +12,7 @@ const ClientsList = ({ clients }) => (
     <Table aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell width="10%">ID</TableCell>
+          <TableCell width="10%">#</TableCell>
           <TableCell>Name</TableCell>
         </TableRow>
       </TableHead>
