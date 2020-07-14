@@ -1,0 +1,15 @@
+{
+  "short_name": "Finances",
+  "name": "My Finances",
+  "icons": [
+    {
+      "src": "/images/finances-240.png",
+      "sizes": "96x96 128x128 192x192 240x240",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2e3848",
+  "background_color": "#999"
+}
