@@ -1,27 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
-import { routes, navigate } from '@redwoodjs/router';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import TimerIcon from '@material-ui/icons/Timer';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import TuneIcon from '@material-ui/icons/Tune';
+import MainNavigation from 'src/components/MainNavigation';
 
 interface Props {
   title: string;
@@ -34,92 +19,34 @@ const MainLayout: React.FC<Props> = ({ children, title }) => {
 
   const [showNavigation, setShowNavigation] = React.useState(false);
 
-  const path = window.location.pathname.substr(1);
-  const [currentPage, setCurrentPage] = React.useState(path.length ? path : 'timeTracking');
-
-  const handleChange = (event: React.ChangeEvent<{}>, newPage: string) => {
-    setCurrentPage(newPage);
-    navigate(routes[newPage]());
-  };
-
   return (
     <Wrapper isMobile={isTabletOrMobileDevice}>
       <AppBar position="fixed">
         <Toolbar>
-          {!isTabletOrMobileDevice && (
-            <IconButton color="inherit" aria-label="open drawer" onClick={() => setShowNavigation(true)} edge="start">
-              <MenuIcon />
-            </IconButton>
-          )}
+          <IconButton
+            className="show-menu"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={() => setShowNavigation(true)}
+            edge="start"
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography variant="h6" noWrap>
             {title}
           </Typography>
         </Toolbar>
       </AppBar>
-      <SwipeableDrawer
-        // variant="permanent"
-        open={showNavigation}
-        onOpen={() => setShowNavigation(true)}
-        onClose={() => setShowNavigation(false)}
-      >
-        <div>
-          <IconButton>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <ListItem button onClick={event => handleChange(event, 'transactions')}>
-            <ListItemIcon>
-              <AccountBalanceIcon />
-            </ListItemIcon>
-            <ListItemText primary="Transactions" />
-          </ListItem>
-          <ListItem button onClick={event => handleChange(event, 'receipts')}>
-            <ListItemIcon>
-              <ReceiptIcon />
-            </ListItemIcon>
-            <ListItemText primary="Receipts" />
-          </ListItem>
-          <ListItem button onClick={event => handleChange(event, 'timeTracking')}>
-            <ListItemIcon>
-              <TimerIcon />
-            </ListItemIcon>
-            <ListItemText primary="Time Tracking" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button onClick={event => handleChange(event, 'clients')}>
-            <ListItemIcon>
-              <PermContactCalendarIcon />
-            </ListItemIcon>
-            <ListItemText primary="Clients" />
-          </ListItem>
-          <ListItem disabled>
-            <ListItemIcon>
-              <TrendingUpIcon />
-            </ListItemIcon>
-            <ListItemText primary="Statistics" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button onClick={event => handleChange(event, 'settings')}>
-            <ListItemIcon>
-              <TuneIcon />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItem>
-        </List>
-      </SwipeableDrawer>
+
+      <MainNavigation showNavigation={showNavigation} setShowNavigation={setShowNavigation} />
+
       {children}
-      {isTabletOrMobileDevice && (
+      {/* {isTabletOrMobileDevice && (
         <BottomNavigation value={currentPage} onChange={handleChange} showLabels>
           <BottomNavigationAction label="Time Tracking" value="timeTracking" icon={<TimerIcon />} />
           <BottomNavigationAction label="Receipts" value="receipts" icon={<ReceiptIcon />} />
         </BottomNavigation>
-      )}
+      )} */}
     </Wrapper>
   );
 };
@@ -136,6 +63,14 @@ const Wrapper = styled.main<{ isMobile: boolean }>`
 
     > :last-child {
       margin-top: auto;
+    }
+
+    .show-menu {
+      ${isMobile &&
+      css`
+        position: absolute;
+        right: 0;
+      `}
     }
 
     .MuiAppBar-root,

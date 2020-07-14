@@ -2,19 +2,15 @@ import React from 'react';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
-import SaveIcon from '@material-ui/icons/Save';
-import PrintIcon from '@material-ui/icons/Print';
-import ShareIcon from '@material-ui/icons/Share';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
+import ReceiptIcon from '@material-ui/icons/Receipt';
+import BackupIcon from '@material-ui/icons/Backup';
 import MainLayout from 'src/layouts/MainLayout';
 
 const actions = [
-  { icon: <FileCopyIcon />, name: 'Copy' },
-  { icon: <SaveIcon />, name: 'Save' },
-  { icon: <PrintIcon />, name: 'Print' },
-  { icon: <ShareIcon />, name: 'Share' },
-  { icon: <FavoriteIcon />, name: 'Like' },
+  { icon: <ImportExportIcon />, name: 'Add transaction' },
+  { icon: <ReceiptIcon />, name: 'Add receipt' },
+  { icon: <BackupIcon />, name: 'Upload transactions' },
 ];
 
 const TransactionsPage = () => {
@@ -23,7 +19,7 @@ const TransactionsPage = () => {
   return (
     <MainLayout title="Transactions">
       <SpeedDial
-        ariaLabel="SpeedDial example"
+        ariaLabel="Sub menu"
         icon={<SpeedDialIcon />}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
