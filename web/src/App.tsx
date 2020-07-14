@@ -12,9 +12,9 @@ const App = () => {
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const isDarkMode = window.localStorage.getItem('darkMode') !== 'false';
   const [darkMode] = useLocalStorage('darkMode', isDarkMode || prefersDarkMode);
-  let theme = DarkTheme;
-  if (!darkMode) theme = LightTheme;
-  console.log(darkMode, isDarkMode, theme.colors.backgroundPrimary);
+  const theme = DarkTheme;
+  // if (!darkMode) theme = LightTheme;
+  // console.log(darkMode, isDarkMode, theme.colors.backgroundPrimary);
 
   return (
     <ThemeProvider theme={theme}>
