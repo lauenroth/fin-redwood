@@ -84,7 +84,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       opacity: 1;
     }
 
-    :not(.MuiSpeedDial-root) > .MuiFab-root,
+    .MuiFab-root:not(.MuiSpeedDialAction-fab),
     .MuiSpeedDial-root {
       bottom: 20px;
       position: fixed;
@@ -98,17 +98,11 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
         background-color: rgba(45, 55, 72, 1);
       }
     }
+
+    #Submenu-actions {
+      margin-bottom: 20px;
+    }
   `}
 `;
-
-const MainHeader = styled.header`
-  h1 {
-    font-size: 24px;
-    font-weight: normal;
-    text-align: center;
-  }
-`;
-
-export { MainHeader };
 
 export default MainLayout;
