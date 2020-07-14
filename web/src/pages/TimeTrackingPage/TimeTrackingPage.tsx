@@ -7,7 +7,7 @@ const days = ['M', 'T', 'W', 'T', 'F'];
 
 const TimeTrackingPage = () => {
   return (
-    <MainLayout>
+    <MainLayout title="Time Tracking">
       <Box title="Week 22. - 26.6.">
         <WeekWrapper>
           <Week>

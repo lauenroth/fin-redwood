@@ -1,7 +1,7 @@
 import MainLayout from 'src/layouts/MainLayout';
 
 const ReceiptsPage = () => {
-  return <MainLayout>Receipt</MainLayout>;
+  return <MainLayout title="Receipts">todo...</MainLayout>;
 };
 
 export default ReceiptsPage;
