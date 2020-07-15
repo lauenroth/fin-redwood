@@ -124,7 +124,7 @@ const Transactions = styled.ul`
 
   li {
     align-items: center;
-    background-color: rgba(45, 55, 72, 0.6);
+    background-color: rgb(45, 55, 72);
     border-bottom: 1px solid #1a202c;
     display: flex;
     height: 60px;

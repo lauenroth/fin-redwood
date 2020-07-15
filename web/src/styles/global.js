@@ -46,7 +46,7 @@ const GlobalCss = createGlobalStyle`
 
     .MuiDrawer-docked .MuiDrawer-paper,
     .MuiDrawer-modal .MuiDrawer-paper {
-      background-color: rgba(45, 55, 72, 0.9);
+      background-color: rgba(45, 55, 72, 1);
       color: #dbdbdb;
       width: 225px;
     }
