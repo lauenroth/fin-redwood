@@ -1,11 +1,11 @@
 import { render } from '@redwoodjs/testing';
 
-import ReceiptsPage from './ReceiptsPage';
+import InvoicesPage from './InvoicesPage';
 
-describe('ReceiptsPage', () => {
+describe('InvoicesPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ReceiptsPage />);
+      render(<InvoicesPage />);
     }).not.toThrow();
   });
 });

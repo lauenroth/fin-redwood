@@ -12,7 +12,8 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import TuneIcon from '@material-ui/icons/Tune';
 import TimerIcon from '@material-ui/icons/Timer';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 interface Props {
   showNavigation: boolean;
@@ -48,7 +49,7 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
       <List>
         <ListItem button onClick={event => handleChange(event, 'transactions')}>
           <ListItemIcon>
-            <AccountBalanceIcon />
+            <ImportExportIcon />
           </ListItemIcon>
           <ListItemText primary="Transactions" />
         </ListItem>
@@ -61,6 +62,12 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
       </List>
       <Divider />
       <List>
+        <ListItem button onClick={event => handleChange(event, 'invoices')}>
+          <ListItemIcon>
+            <DescriptionIcon />
+          </ListItemIcon>
+          <ListItemText primary="Invoices" />
+        </ListItem>
         <ListItem button onClick={event => handleChange(event, 'clients')}>
           <ListItemIcon>
             <PermContactCalendarIcon />

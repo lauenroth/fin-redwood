@@ -1,5 +1,6 @@
 import { Router, Route } from '@redwoodjs/router';
 import DashboardPage from 'src/pages/DashboardPage/DashboardPage';
+import InvoicesPage from 'src/pages/InvoicesPage/InvoicesPage';
 import ReceiptsPage from 'src/pages/ReceiptsPage/ReceiptsPage';
 import SettingsPage from 'src/pages/SettingsPage/SettingsPage';
 import TimeTrackingPage from 'src/pages/TimeTrackingPage/TimeTrackingPage';
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route path="/receipts" page={ReceiptsPage} name="receipts" />
       <Route path="/time-tracking" page={TimeTrackingPage} name="timeTracking" />
       <Route path="/clients" page={ClientsPage} name="clients" />
+      <Route path="/invoices" page={InvoicesPage} name="invoices" />
       <Route path="/settings" page={SettingsPage} name="settings" />
 
       <Route path="/clients/new" page={NewClientPage} name="newClient" />

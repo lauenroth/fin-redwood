@@ -45,7 +45,7 @@ const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
 };
 
 const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
-  ${({ isMobile, hasPadding }) => css`
+  ${({ theme, isMobile, hasPadding }) => css`
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -104,6 +104,16 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
 
     #Submenu-actions {
       margin-bottom: 20px;
+    }
+
+    ${theme.mediaQuery.phone} {
+      .MuiToolbar-root {
+        text-align: center;
+
+        h1 {
+          width: 100%;
+        }
+      }
     }
   `}
 `;
