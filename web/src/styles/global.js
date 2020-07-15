@@ -6,7 +6,6 @@ const GlobalCss = createGlobalStyle`
     *::before,
     *::after {
       box-sizing: inherit;
-      font-family: ${theme.font.family.mainFont};
       outline: none;
       text-rendering: optimizeLegibility;
       -moz-osx-font-smoothing: grayscale;
@@ -32,7 +31,7 @@ const GlobalCss = createGlobalStyle`
       width: 100%;
     }
     body {
-      font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+      font-family: ${theme.font.family.mainFont};
       height: 100%;
       margin: 0;
     }

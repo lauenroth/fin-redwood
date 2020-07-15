@@ -33,9 +33,7 @@ const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            {title}
-          </Typography>
+          <h1>{title}</h1>
         </Toolbar>
       </AppBar>
 
@@ -71,6 +69,11 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
     .MuiAppBar-root,
     .MuiBottomNavigation-root {
       background-color: rgba(45, 55, 72, 0.8);
+
+      h1 {
+        font-family: Lobster, Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 22px;
+      }
     }
 
     .MuiBottomNavigationAction-root {
