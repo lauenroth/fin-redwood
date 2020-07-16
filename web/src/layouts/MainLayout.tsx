@@ -65,7 +65,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       ${isMobile &&
       css`
         position: absolute;
-        right: 0;
+        right: 10px;
       `}
     }
 
