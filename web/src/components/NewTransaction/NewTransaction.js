@@ -23,12 +23,7 @@ const NewTransaction = () => {
     createTransaction({ variables: { input } });
   };
 
-  return (
-    <>
-      <h2>New Transaction</h2>
-      <TransactionForm onSave={onSave} loading={loading} error={error} />
-    </>
-  );
+  return <TransactionForm onSave={onSave} loading={loading} error={error} />;
 };
 
 export default NewTransaction;

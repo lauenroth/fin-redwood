@@ -32,6 +32,7 @@ const GlobalCss = createGlobalStyle`
       height: 100%;
       width: 100%;
     }
+
     body {
       font-family: ${theme.font.family.mainFont};
       height: 100%;
@@ -79,6 +80,24 @@ const GlobalCss = createGlobalStyle`
     .MuiListItemIcon-root .MuiDivider-root,
     .MuiDrawer-modal .MuiDivider-root {
       background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    form .MuiFormControl-root {
+      width: 100%;
+    }
+
+    form .MuiFormLabel-root,
+    form .MuiInputBase-input {
+      color: #dbdbdb;
+    }
+
+    form .MuiOutlinedInput-input {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #dbdbdb;
+
+      label {
+        color: #dbdbdb;
+      }
     }
   `}
 `;
