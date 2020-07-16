@@ -46,7 +46,7 @@ const ClientsList = ({ clients }) => {
 
 const Wrapper = styled.section`
   ${({ theme }) => css`
-    max-height: calc(100 * var(--vh));
+    max-height: calc(100 * var(--vh) - 64px);
     overflow: auto;
     padding: 0 20px;
 
