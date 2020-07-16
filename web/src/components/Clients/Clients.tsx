@@ -48,7 +48,7 @@ const Wrapper = styled.section`
   ${({ theme }) => css`
     max-height: calc(100 * var(--vh));
     overflow: auto;
-    padding: 20px;
+    padding: 0 20px;
 
     ul {
       margin: 0;
@@ -56,8 +56,11 @@ const Wrapper = styled.section`
     }
 
     .MuiListSubheader-root {
+      align-items: center;
       background-color: ${theme.colors.backgroundPrimary};
       color: ${theme.colors.textSecondary};
+      display: flex;
+      height: 35px;
     }
 
     .MuiListItem-root {
@@ -70,7 +73,7 @@ const Wrapper = styled.section`
     }
 
     ${theme.mediaQuery.phone} {
-      padding: 20px 0;
+      padding: 0;
 
       .MuiListItem-root {
         padding: 16px;
