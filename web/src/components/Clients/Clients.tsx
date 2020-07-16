@@ -1,31 +1,86 @@
+import styled, { css } from 'styled-components';
 import { navigate, routes } from '@redwoodjs/router';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
-const ClientsList = ({ clients }) => (
-  <TableContainer component={Paper}>
-    <Table aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell width="10%">#</TableCell>
-          <TableCell>Name</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {clients.map(client => (
-          <TableRow key={client.id} onClick={() => navigate(routes.editClient({ id: client.id }))}>
-            <TableCell>{client.id}</TableCell>
-            <TableCell>{client.name}</TableCell>
-          </TableRow>
+const ClientsList = ({ clients }) => {
+  const letters = [];
+  const groupedClients = {};
+
+  clients.forEach(client => {
+    const letter = client.name[0];
+    if (!letters.includes(letter)) {
+      letters.push(letter);
+    }
+    if (!groupedClients[letter]) {
+      groupedClients[letter] = [client];
+    } else {
+      groupedClients[letter].push(client);
+    }
+  });
+
+  return (
+    <Wrapper>
+      <List subheader={<li />}>
+        {letters.sort().map(letter => (
+          <li key={`section-${letter}`}>
+            <ListSubheader>{letter}</ListSubheader>
+            <ul>
+              {groupedClients[letter].sort().map(client => (
+                <ListItem
+                  key={`client-${letter}-${client.id}`}
+                  onClick={() => navigate(routes.editClient({ id: client.id }))}
+                >
+                  <ListItemText primary={client.name} />
+                </ListItem>
+              ))}
+            </ul>
+          </li>
         ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-);
+      </List>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.section`
+  ${({ theme }) => css`
+    max-height: calc(100 * var(--vh));
+    overflow: auto;
+    padding: 20px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .MuiListSubheader-root {
+      background-color: ${theme.colors.backgroundPrimary};
+      color: ${theme.colors.textSecondary};
+    }
+
+    .MuiListItem-root {
+      background-color: ${theme.colors.backgroundSecondary};
+      cursor: pointer;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid ${theme.colors.border};
+      }
+    }
+
+    ${theme.mediaQuery.phone} {
+      padding: 20px 0;
+
+      .MuiListItem-root {
+        padding: 16px;
+
+        .MuiTypography-root {
+          font-size: 18px;
+        }
+      }
+    }
+  `}
+`;
 
 export default ClientsList;

@@ -13,7 +13,7 @@ const Wrapper = styled.section<{ backgroundColor: string }>`
     display: flex;
     height: 100vh;
     justify-content: center;
-    padding-top: 150px;
+    padding-top: 120px;
 
     svg {
       background-color: ${backgroundColor || theme.colors.backgroundPrimary};

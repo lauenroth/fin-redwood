@@ -6,7 +6,7 @@ import Clients from 'src/components/ClientsCell';
 
 const ClientsPage = () => {
   return (
-    <MainLayout title="Clients" hasPadding>
+    <MainLayout title="Clients">
       <Clients />
       <Fab color="primary" onClick={() => navigate(routes.newClient())}>
         <AddIcon />

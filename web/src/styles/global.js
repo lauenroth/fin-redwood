@@ -25,6 +25,7 @@ const GlobalCss = createGlobalStyle`
     }
 
     html {
+      background-color: ${theme.colors.backgroundPrimary};
       box-sizing: border-box;
       font-size: ${theme.font.size.default};
       height: 100%;
@@ -41,7 +42,7 @@ const GlobalCss = createGlobalStyle`
       color: ${theme.colors.textPrimary};
       display: flex;
       flex-direction: column;
-      height: calc(100 * var(--vh));
+      min-height: calc(100 * var(--vh));
     }
 
     .MuiDrawer-docked .MuiDrawer-paper,

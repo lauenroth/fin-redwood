@@ -74,7 +74,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
         height: 200px;
         justify-content: center;
         margin: auto;
-        position: absolute;
+        position: fixed;
         top: calc(50vh - 140px);
         width: 200px;
       }
@@ -95,6 +95,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       h1 {
         font-family: Lobster, Verdana, Geneva, Tahoma, sans-serif;
         font-size: 22px;
+        font-weight: normal;
       }
     }
 
@@ -114,6 +115,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       bottom: 20px;
       position: fixed;
       right: 20px;
+      z-index: 100;
     }
 
     .MuiFab-root:not(.MuiSpeedDialAction-fab) {
