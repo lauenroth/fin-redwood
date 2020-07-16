@@ -58,26 +58,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       margin: 0 auto;
       max-width: 1600px;
       padding: ${hasPadding ? '20px' : 0};
-      position: relative;
       width: 100%;
-
-      &::before {
-        align-items: center;
-        border: 5px solid rgba(45, 55, 72, 0.3);
-        border-radius: 10px;
-        color: rgba(45, 55, 72, 0.3);
-        content: 'Finny';
-        display: flex;
-        left: calc(50% - 100px);
-        font-family: Lobster;
-        font-size: 70px;
-        height: 200px;
-        justify-content: center;
-        margin: auto;
-        position: fixed;
-        top: calc(50vh - 140px);
-        width: 200px;
-      }
     }
 
     .show-menu {

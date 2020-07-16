@@ -35,6 +35,24 @@ const GlobalCss = createGlobalStyle`
       font-family: ${theme.font.family.mainFont};
       height: 100%;
       margin: 0;
+      position: relative;
+
+      &::before {
+        align-items: center;
+        color: rgba(45, 55, 72, 0.3);
+        content: 'Finny';
+        display: flex;
+        left: calc(50% - 100px);
+        font-family: Lobster;
+        font-size: 70px;
+        height: 100px;
+        justify-content: center;
+        margin: auto;
+        position: fixed;
+        transform: scale(0.5);
+        top: calc(50% - 50px);
+        width: 200px;
+      }
     }
 
     #app {
