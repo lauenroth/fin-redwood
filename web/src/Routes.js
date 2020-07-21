@@ -1,12 +1,18 @@
 import { Router, Route } from '@redwoodjs/router';
-import DashboardPage from 'src/pages/DashboardPage/DashboardPage';
-import InvoicesPage from 'src/pages/InvoicesPage/InvoicesPage';
+import DashboardPage from 'src/pages/Dashboard/DashboardPage/DashboardPage';
+import InvoicesPage from 'src/pages/Invoices/InvoicesPage/InvoicesPage';
 import SettingsPage from 'src/pages/SettingsPage/SettingsPage';
 import TimeTrackingPage from 'src/pages/TimeTrackingPage/TimeTrackingPage';
-import TransactionsPage from 'src/pages/TransactionsPage/TransactionsPage';
-import TransactionImportPage from 'src/pages/TransactionImportPage/TransactionImportPage';
+import TransactionsPage from 'src/pages/Transactions/TransactionsPage/TransactionsPage';
+import TransactionImportPage from 'src/pages/Transactions/TransactionImportPage/TransactionImportPage';
 
-import ClientsPage from 'src/pages/ClientsPage/ClientsPage';
+import NewTransactionPage from 'src/pages/Transactions/NewTransactionPage/NewTransactionPage';
+import EditTransactionPage from 'src/pages/Transactions/EditTransactionPage/EditTransactionPage';
+import TransactionPage from 'src/pages/Transactions/TransactionPage/TransactionPage';
+import ClientsPage from 'src/pages/Clients/ClientsPage/ClientsPage';
+import ClientPage from 'src/pages/Clients/ClientPage/ClientPage';
+import NewClientPage from 'src/pages/Clients/NewClientPage/NewClientPage';
+import EditClientPage from 'src/pages/Clients/EditClientPage/EditClientPage';
 
 const Routes = () => {
   return (

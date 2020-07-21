@@ -1,11 +1,12 @@
 class TransactionHelper {
   static parse = (transactions, bank: string) => {
-    return transactions.map(transaction => {
+    return transactions.map((transaction, index) => {
       console.log(transaction);
 
       switch (bank) {
         case 'n26':
           return {
+            id: index,
             date: transaction.Date,
             amount: parseFloat(transaction['Amount (EUR)']),
             foreignAmount: parseFloat(transaction['Amount (Foreign Currency)']),
@@ -22,6 +23,7 @@ class TransactionHelper {
             ? parseFloat(transaction.amount.substring(1)) * -1
             : parseFloat(transaction.amount);
           return {
+            id: index,
             date: transaction.Buchungstag.split('.').reverse().join('-'),
             amount: transaction.amount,
             account: transaction.Kontonummer,

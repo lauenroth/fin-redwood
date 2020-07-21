@@ -14,6 +14,9 @@ export default {
     textPrimary: '#dbdbdb',
     textSecondary: 'rgba(153, 153, 153, .9)',
 
+    red: '#e24',
+    green: '#7a4',
+
     border: 'rgba(255, 255, 255, 0.12)',
     shadow: 'rgba(0, 0, 0, .05)',
     boxShadow:

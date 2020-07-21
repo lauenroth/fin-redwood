@@ -1,4 +1,4 @@
-import ClientsLayout from 'src/layouts/ClientsLayout';
+import ClientsLayout from 'src/pages/Clients/EditClientPage/node_modules/src/layouts/ClientsLayout';
 import ClientCell from 'src/components/ClientCell';
 
 const ClientPage = ({ id }) => {

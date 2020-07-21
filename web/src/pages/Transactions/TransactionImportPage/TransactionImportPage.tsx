@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import MainLayout, { MainFooter } from 'src/layouts/MainLayout';
 import UploadModal from 'src/components/UploadModal';
 import { Stepper, Step, StepLabel, Button } from '@material-ui/core';
+
 import TransactionImportList from './TransactionImportList';
 
 const steps = ['Upload CSV', 'Select transactions', 'Confirm'];
@@ -39,7 +40,7 @@ const TransactionImportPage = () => {
             <Button color="primary" variant="contained" onClick={() => setActiveStep(activeStep - 1)}>
               Back
             </Button>
-          )}}
+          )}
           <Button
             color="primary"
             variant="contained"

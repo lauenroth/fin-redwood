@@ -1,4 +1,4 @@
-import TransactionsLayout from 'src/layouts/TransactionsLayout';
+import TransactionsLayout from 'src/pages/Transactions/TransactionPage/node_modules/src/layouts/TransactionsLayout';
 import EditTransactionCell from 'src/components/EditTransactionCell';
 
 const EditTransactionPage = ({ id }) => {
