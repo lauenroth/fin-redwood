@@ -3,13 +3,15 @@ import DashboardPage from 'src/pages/DashboardPage/DashboardPage';
 import InvoicesPage from 'src/pages/InvoicesPage/InvoicesPage';
 import SettingsPage from 'src/pages/SettingsPage/SettingsPage';
 import TimeTrackingPage from 'src/pages/TimeTrackingPage/TimeTrackingPage';
-
 import TransactionsPage from 'src/pages/TransactionsPage/TransactionsPage';
+import TransactionImportPage from 'src/pages/TransactionImportPage/TransactionImportPage';
+
 import ClientsPage from 'src/pages/ClientsPage/ClientsPage';
 
 const Routes = () => {
   return (
     <Router>
+      <Route path="/transaction-import" page={TransactionImportPage} name="transactionImport" />
       <Route path="/transactions/new" page={NewTransactionPage} name="newTransaction" />
       <Route path="/transactions/{id:Int}/edit" page={EditTransactionPage} name="editTransaction" />
       <Route path="/transactions/{id:Int}" page={TransactionPage} name="transaction" />

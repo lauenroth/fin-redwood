@@ -44,6 +44,17 @@ const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
   );
 };
 
+export const MainFooter = styled.footer`
+  ${({ theme }) => css`
+    background-color: ${theme.colors.backgroundSecondary};
+    border-top: 1px solid ${theme.colors.border};
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 20px;
+  `}
+`;
+
 const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
   ${({ theme, isMobile, hasPadding }) => css`
     display: flex;

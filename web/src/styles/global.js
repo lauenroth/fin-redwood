@@ -88,7 +88,7 @@ const GlobalCss = createGlobalStyle`
 
     form .MuiFormLabel-root,
     form .MuiInputBase-input {
-      color: #dbdbdb;
+      ${'' /* color: #dbdbdb; */}
     }
 
     form .MuiOutlinedInput-input {

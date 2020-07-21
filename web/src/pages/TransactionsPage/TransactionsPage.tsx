@@ -9,12 +9,6 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import BackupIcon from '@material-ui/icons/Backup';
 import MainLayout from 'src/layouts/MainLayout';
 
-const actions = [
-  { icon: <ImportExportIcon />, name: 'Add transaction', route: () => navigate(routes.newTransaction()) },
-  { icon: <ReceiptIcon />, name: 'Add receipt' },
-  { icon: <BackupIcon />, name: 'Upload transactions' },
-];
-
 const transactions = [
   {
     title: 'Train ticket',
@@ -86,6 +80,12 @@ const transactions = [
 const TransactionsPage = () => {
   const [open, setOpen] = React.useState(false);
 
+  const actions = [
+    { icon: <ImportExportIcon />, name: 'Add transaction', action: () => navigate(routes.newTransaction()) },
+    { icon: <ReceiptIcon />, name: 'Add receipt' },
+    { icon: <BackupIcon />, name: 'Upload transactions', action: () => navigate(routes.transactionImport()) },
+  ];
+
   return (
     <MainLayout title="Transactions">
       <Transactions>
@@ -98,6 +98,7 @@ const TransactionsPage = () => {
           </li>
         ))}
       </Transactions>
+
       <SpeedDial
         ariaLabel="Sub menu"
         icon={<SpeedDialIcon />}
@@ -111,8 +112,8 @@ const TransactionsPage = () => {
             icon={action.icon}
             tooltipTitle={action.name}
             onClick={() => {
-              if (action.route) {
-                action.route();
+              if (action.action) {
+                action.action();
               }
               setOpen(false);
             }}

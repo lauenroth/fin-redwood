@@ -11,6 +11,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@redwoodjs/router": "^0.13.0",
     "@redwoodjs/web": "^0.13.0",
+    "axios": "^0.19.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
