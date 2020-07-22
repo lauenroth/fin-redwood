@@ -3,7 +3,7 @@ import NewClient from 'src/components/NewClient';
 
 const NewClientPage = () => {
   return (
-    <MainLayout>
+    <MainLayout title="New Client" hasPadding hasBackButton>
       <NewClient />
     </MainLayout>
   );

@@ -3,17 +3,18 @@ import styled, { css } from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MainNavigation from 'src/components/MainNavigation';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 interface Props {
   title: string;
   hasPadding?: boolean;
+  hasBackButton?: boolean;
 }
 
-const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
+const MainLayout: React.FC<Props> = ({ children, title, hasPadding, hasBackButton }) => {
   const isTabletOrMobileDevice = useMediaQuery({
     query: '(max-device-width: 1224px)',
   });
@@ -24,10 +25,15 @@ const MainLayout: React.FC<Props> = ({ children, title, hasPadding }) => {
     <Wrapper isMobile={isTabletOrMobileDevice} hasPadding={hasPadding}>
       <AppBar position="fixed">
         <Toolbar>
+          {isTabletOrMobileDevice && hasBackButton && (
+            <IconButton color="inherit" className="back" onClick={() => window.history.back()}>
+              <ChevronLeftIcon />
+            </IconButton>
+          )}
           <IconButton
             className="show-menu"
             color="inherit"
-            aria-label="open drawer"
+            aria-label="Open menu"
             onClick={() => setShowNavigation(true)}
             edge="start"
           >
@@ -72,12 +78,9 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       width: 100%;
     }
 
-    .show-menu {
-      ${isMobile &&
-      css`
-        position: absolute;
-        right: 10px;
-      `}
+    .back {
+      left: 10px;
+      position: absolute;
     }
 
     .MuiAppBar-root,
@@ -129,6 +132,11 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
         h1 {
           width: 100%;
         }
+      }
+
+      .show-menu {
+        position: absolute;
+        right: 10px;
       }
     }
   `}

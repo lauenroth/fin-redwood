@@ -25,12 +25,7 @@ const NewClient = () => {
 
   return (
     <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Client</h2>
-      </header>
-      <div className="rw-segment-main">
-        <ClientForm onSave={onSave} loading={loading} error={error} />
-      </div>
+      <ClientForm onSave={onSave} loading={loading} error={error} />
     </div>
   );
 };

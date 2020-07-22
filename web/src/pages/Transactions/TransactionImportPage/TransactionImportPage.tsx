@@ -25,7 +25,7 @@ const TransactionImportPage = () => {
   };
 
   return (
-    <MainLayout title="Transaction import">
+    <MainLayout title="Transaction import" hasBackButton>
       <Wrapper>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (

@@ -97,6 +97,10 @@ const Wrapper = styled.form`
     input {
       display: none;
     }
+
+    ${theme.mediaQuery.phone} {
+      margin-top: 0;
+    }
   `}
 `;
 
