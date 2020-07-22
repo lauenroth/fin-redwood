@@ -1,11 +1,11 @@
-import ClientsLayout from 'src/pages/Clients/EditClientPage/node_modules/src/layouts/ClientsLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import ClientCell from 'src/components/ClientCell';
 
 const ClientPage = ({ id }) => {
   return (
-    <ClientsLayout>
+    <MainLayout>
       <ClientCell id={id} />
-    </ClientsLayout>
+    </MainLayout>
   );
 };
 

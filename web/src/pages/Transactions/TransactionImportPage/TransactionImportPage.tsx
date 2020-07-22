@@ -19,6 +19,11 @@ const TransactionImportPage = () => {
     return true;
   };
 
+  const onSetTransactions = newTransactions => {
+    setTransactions(newTransactions);
+    setActiveStep(1);
+  };
+
   return (
     <MainLayout title="Transaction import">
       <Wrapper>
@@ -31,7 +36,7 @@ const TransactionImportPage = () => {
         </Stepper>
 
         <section>
-          {activeStep === 0 && <UploadModal setTransactions={newTransactions => setTransactions(newTransactions)} />}
+          {activeStep === 0 && <UploadModal setTransactions={onSetTransactions} />}
           {activeStep === 1 && transactions && <TransactionImportList transactions={transactions} />}
         </section>
 

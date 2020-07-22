@@ -1,11 +1,11 @@
-import TransactionsLayout from 'src/pages/Transactions/TransactionPage/node_modules/src/layouts/TransactionsLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import EditTransactionCell from 'src/components/EditTransactionCell';
 
 const EditTransactionPage = ({ id }) => {
   return (
-    <TransactionsLayout>
+    <MainLayout>
       <EditTransactionCell id={id} />
-    </TransactionsLayout>
+    </MainLayout>
   );
 };
 

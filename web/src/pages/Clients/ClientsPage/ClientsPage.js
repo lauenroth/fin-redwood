@@ -1,11 +1,11 @@
-import ClientsLayout from 'src/layouts/ClientsLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import ClientsCell from 'src/components/ClientsCell';
 
 const ClientsPage = () => {
   return (
-    <ClientsLayout>
+    <MainLayout>
       <ClientsCell />
-    </ClientsLayout>
+    </MainLayout>
   );
 };
 

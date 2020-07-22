@@ -34,7 +34,7 @@ const TransactionImportList = ({ transactions }) => {
 
   const currency = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
 
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
+  const handleSelectClick = (event: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected: string[] = [];
 
@@ -51,6 +51,15 @@ const TransactionImportList = ({ transactions }) => {
     setSelected(newSelected);
   };
 
+  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      const newSelecteds = transactions.map(n => n.id.toString());
+      setSelected(newSelecteds);
+      return;
+    }
+    setSelected([]);
+  };
+
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
 
   return (
@@ -59,7 +68,10 @@ const TransactionImportList = ({ transactions }) => {
         <TableHead>
           <TableRow>
             <TableCell component="th" padding="checkbox">
-              <Checkbox checked={false} />
+              <Checkbox
+                checked={transactions.length > 0 && selected.length === transactions.length}
+                onChange={handleSelectAllClick}
+              />
             </TableCell>
             <TableCell component="th" style={{ width: '125px' }}>
               Date
@@ -93,7 +105,7 @@ const TransactionImportList = ({ transactions }) => {
                   <Checkbox
                     checked={isRowSelected}
                     // inputProps={{ 'aria-labelledby': labelId }}
-                    onClick={event => handleClick(event, transaction.id.toString())}
+                    onClick={event => handleSelectClick(event, transaction.id.toString())}
                   />
                 </TableCell>
                 <TableCell style={{ width: '125px' }}>{transaction.date}</TableCell>
@@ -155,6 +167,26 @@ const Wrapper = styled.div`
 
     .received {
       color: ${theme.colors.green};
+    }
+
+    .MuiInput-root {
+      color: ${theme.colors.textPrimary};
+
+      &::before {
+        border-bottom-color: ${theme.colors.textPrimary}! important;
+        opacity: 0.6;
+      }
+      &::after {
+        display: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+
+      .MuiSelect-icon {
+        color: ${theme.colors.textPrimary};
+      }
     }
   `}
 `;

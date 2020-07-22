@@ -1,11 +1,11 @@
-import ClientsLayout from 'src/pages/Clients/EditClientPage/node_modules/src/layouts/ClientsLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import NewClient from 'src/components/NewClient';
 
 const NewClientPage = () => {
   return (
-    <ClientsLayout>
+    <MainLayout>
       <NewClient />
-    </ClientsLayout>
+    </MainLayout>
   );
 };
 
