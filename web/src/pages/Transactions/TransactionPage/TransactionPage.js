@@ -1,11 +1,11 @@
-import TransactionsLayout from 'src/layouts/TransactionsLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import TransactionCell from 'src/components/TransactionCell';
 
 const TransactionPage = ({ id }) => {
   return (
-    <TransactionsLayout>
+    <MainLayout>
       <TransactionCell id={id} />
-    </TransactionsLayout>
+    </MainLayout>
   );
 };
 

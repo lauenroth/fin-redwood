@@ -53,7 +53,7 @@ const TransactionImportPage = () => {
             disabled={!canGoNext()}
             style={{ marginLeft: 'auto' }}
           >
-            Next
+            {activeStep > 0 ? 'Next' : 'Upload'}
           </Button>
         </MainFooter>
       </Wrapper>
@@ -65,10 +65,15 @@ const Wrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100 * var(--vh) - 64px);
+
+    section {
+      display: flex;
+      height: calc(100 * var(--vh) - 250px);
+    }
 
     ${theme.mediaQuery.phone} {
-      min-height: calc(100vh - 56px);
+      min-height: calc(100 * var(--vh) - 56px);
     }
   `}
 `;

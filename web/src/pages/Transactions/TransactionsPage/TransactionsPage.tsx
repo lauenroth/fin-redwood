@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { navigate, routes } from '@redwoodjs/router';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
@@ -8,6 +8,7 @@ import ImportExportIcon from '@material-ui/icons/ImportExport';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import BackupIcon from '@material-ui/icons/Backup';
 import MainLayout from 'src/layouts/MainLayout';
+import NumberHelper from 'src/helpers/NumberHelper';
 
 const transactions = [
   {
@@ -94,7 +95,7 @@ const TransactionsPage = () => {
             <h4>
               {transaction.title} <div>{transaction.date}</div>
             </h4>
-            <Amount>-{transaction.amount.toFixed(2)} €</Amount>
+            <Amount>-{NumberHelper.formatCurrency(transaction.amount)}</Amount>
           </li>
         ))}
       </Transactions>
@@ -151,7 +152,9 @@ const Transactions = styled.ul`
 `;
 
 const Amount = styled.div`
-  color: #e33;
+  ${({ theme }) => css`
+    color: ${theme.colors.red};
+  `}
 `;
 
 export default TransactionsPage;

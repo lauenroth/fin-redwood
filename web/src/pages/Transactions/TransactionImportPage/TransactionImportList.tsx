@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { Checkbox, Select, MenuItem } from '@material-ui/core';
+import NumberHelper from 'src/helpers/NumberHelper';
 
 const categories = {
   expenses: [
@@ -31,8 +32,6 @@ const TransactionImportList = ({ transactions }) => {
   const [page, setPage] = React.useState(1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState<string[]>([]);
-
-  const currency = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
 
   const handleSelectClick = (event: React.MouseEvent<unknown>, name: string) => {
     const selectedIndex = selected.indexOf(name);
@@ -110,7 +109,7 @@ const TransactionImportList = ({ transactions }) => {
                 </TableCell>
                 <TableCell style={{ width: '125px' }}>{transaction.date}</TableCell>
                 <TableCell align="right" className={isExpense ? 'paid' : 'received'} style={{ width: '110px' }}>
-                  {currency.format(transaction.amount)}
+                  {NumberHelper.formatCurrency(transaction.amount)}
                 </TableCell>
                 <TableCell style={{ maxWidth: '300px' }}>{transaction.payee}</TableCell>
                 <TableCell style={{ maxWidth: '250px' }}>

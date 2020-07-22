@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { post } from 'axios';
 import { Button, InputLabel, FormControl, Select, MenuItem } from '@material-ui/core';
 import TransactionHelper from 'src/helpers/TransactionHelper';
@@ -74,32 +74,30 @@ const UploadModal = ({ setTransactions }) => {
 };
 
 const Wrapper = styled.form`
-  background-color: #fff;
-  border: 2px solid #dbdbdb;
-  color: #3f51b5;
-  left: calc(50% - 200px);
-  margin: 40px auto;
-  max-width: 500px;
-  padding: 20px;
-  /* position: fixed; */
-  top: calc(50% - 200px);
-  width: 100%;
-
-  > label {
-    align-items: center;
-    border: 1px dashed rgba(63, 81, 181, 0.5);
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    height: 200px;
-    justify-content: center;
-    margin-bottom: 20px;
+  ${({ theme }) => css`
+    background-color: ${theme.colors.backgroundTertinary};
+    color: ${theme.colors.primaryDark};
+    margin: auto;
+    max-width: 500px;
+    padding: 20px;
     width: 100%;
-  }
 
-  input {
-    display: none;
-  }
+    > label {
+      align-items: center;
+      border: 1px dashed rgba(63, 81, 181, 0.5);
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      height: 200px;
+      justify-content: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    input {
+      display: none;
+    }
+  `}
 `;
 
 export default UploadModal;
