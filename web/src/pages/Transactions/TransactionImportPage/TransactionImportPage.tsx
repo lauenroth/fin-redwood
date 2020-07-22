@@ -70,10 +70,15 @@ const Wrapper = styled.div`
     section {
       display: flex;
       height: calc(100 * var(--vh) - 250px);
+      overflow: auto;
     }
 
     ${theme.mediaQuery.phone} {
       min-height: calc(100 * var(--vh) - 56px);
+
+      section {
+        height: calc(100 * var(--vh) - 262px);
+      }
     }
   `}
 `;
