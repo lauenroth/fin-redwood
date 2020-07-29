@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate, routes } from '@redwoodjs/router';
 import styled from 'styled-components';
 import MainLayout from 'src/layouts/MainLayout';
 import SpeedDial from '@material-ui/lab/SpeedDial';
@@ -9,7 +10,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import TimerIcon from '@material-ui/icons/Timer';
 
 const actions = [
-  { icon: <ImportExportIcon />, name: 'Add transaction' },
+  { icon: <ImportExportIcon />, name: 'Add transaction', action: () => navigate(routes.newTransaction()) },
   { icon: <ReceiptIcon />, name: 'Add receipt' },
   { icon: <TimerIcon />, name: 'Track time' },
 ];
@@ -33,7 +34,12 @@ const DashboardPage = () => {
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              if (action.action) {
+                action.action();
+              }
+              setOpen(false);
+            }}
           />
         ))}
       </SpeedDial>
