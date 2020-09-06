@@ -25,7 +25,7 @@ const NewClient = () => {
 
   return (
     <div className="rw-segment">
-      <ClientForm onSave={onSave} loading={loading} error={error} />
+      <ClientForm client={{}} onSave={onSave} loading={loading} error={error} />
     </div>
   );
 };

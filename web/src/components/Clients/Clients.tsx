@@ -31,7 +31,7 @@ const ClientsList = ({ clients }) => {
               {groupedClients[letter].sort().map(client => (
                 <ListItem
                   key={`client-${letter}-${client.id}`}
-                  onClick={() => navigate(routes.editClient({ id: client.id }))}
+                  onClick={() => navigate(routes.client({ id: client.id }))}
                 >
                   <ListItemText primary={client.name} />
                 </ListItem>

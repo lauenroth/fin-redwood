@@ -3,7 +3,7 @@ import ClientCell from 'src/components/ClientCell';
 
 const ClientPage = ({ id }) => {
   return (
-    <MainLayout>
+    <MainLayout title="Clients" hasPadding hasBackButton>
       <ClientCell id={id} />
     </MainLayout>
   );

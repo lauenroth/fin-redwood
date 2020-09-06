@@ -4,7 +4,7 @@ export const clients = () => {
   return db.client.findMany();
 };
 
-export const client = ({ id }) => {
+export const clientDetails = ({ id }) => {
   return db.client.findOne({
     where: { id },
   });

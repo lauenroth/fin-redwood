@@ -3,7 +3,7 @@ import EditClientCell from 'src/components/EditClientCell';
 
 const EditClientPage = ({ id }) => {
   return (
-    <MainLayout>
+    <MainLayout title="Edit Client" hasPadding hasBackButton>
       <EditClientCell id={id} />
     </MainLayout>
   );

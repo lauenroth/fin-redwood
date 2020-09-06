@@ -1,10 +1,11 @@
 import { useMutation, useFlash } from '@redwoodjs/web';
 import { navigate, routes } from '@redwoodjs/router';
+import LoadingSpinner from '../LoadingSpinner';
 import ClientForm from 'src/components/ClientForm';
 
 export const QUERY = gql`
   query FIND_CLIENT_BY_ID($id: Int!) {
-    client: client(id: $id) {
+    clientDetails: clientDetails(id: $id) {
       id
       name
       address
@@ -26,9 +27,9 @@ const UPDATE_CLIENT_MUTATION = gql`
   }
 `;
 
-export const Loading = () => <div>Loading...</div>;
+export const Loading = () => <LoadingSpinner />;
 
-export const Success = ({ client }) => {
+export const Success = ({ clientDetails: client }) => {
   const { addMessage } = useFlash();
   const [updateClient, { loading, error }] = useMutation(UPDATE_CLIENT_MUTATION, {
     onCompleted: () => {
@@ -41,14 +42,5 @@ export const Success = ({ client }) => {
     updateClient({ variables: { id, input } });
   };
 
-  return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Client {client.id}</h2>
-      </header>
-      <div className="rw-segment-main">
-        <ClientForm client={client} onSave={onSave} error={error} loading={loading} />
-      </div>
-    </div>
-  );
+  return <ClientForm client={client} onSave={onSave} error={error} loading={loading} />;
 };

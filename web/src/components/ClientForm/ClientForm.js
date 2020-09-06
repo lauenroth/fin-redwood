@@ -1,105 +1,68 @@
-import { Form, FormError, FieldError, Label, TextField, NumberField, Submit } from '@redwoodjs/web';
+// import { FieldError, TextField, NumberField, Submit } from '@redwoodjs/web';
+// import { TextField } from '@redwoodjs/forms';
+import { Formik } from 'formik';
 
 const ClientForm = props => {
   const onSubmit = data => {
-    props.onSave(data, props?.client?.id);
+    const client = { ...data };
+    delete client.id;
+    delete client.createdAt;
+    delete client.updatedAt;
+    delete client.__typename;
+    props.onSave(client, data.id);
   };
 
   return (
-    <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit} error={props.error}>
-        <FormError
-          error={props.error}
-          wrapperClassName="rw-form-error-wrapper"
-          titleClassName="rw-form-error-title"
-          listClassName="rw-form-error-list"
-        />
+    <Formik initialValues={props.client} onSubmit={onSubmit}>
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
+        <form onSubmit={handleSubmit}>
+          {/* <FormError
+            error={props.error}
+            wrapperClassName="rw-form-error-wrapper"
+            titleClassName="rw-form-error-title"
+            listClassName="rw-form-error-list"
+          /> */}
 
-        <Label name="name" className="rw-label" errorClassName="rw-label rw-label-error">
-          Name
-        </Label>
-        <TextField
-          name="name"
-          defaultValue={props.client?.name}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="name" className="rw-field-error" />
+          <label name="name">Name</label>
+          <input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values?.name} required />
 
-        <Label name="address" className="rw-label" errorClassName="rw-label rw-label-error">
-          Address
-        </Label>
-        <TextField
-          name="address"
-          defaultValue={props.client?.address}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="address" className="rw-field-error" />
+          <label name="address">Address</label>
+          <textarea name="address" onChange={handleChange} onBlur={handleBlur}>
+            {values?.address}
+          </textarea>
 
-        <Label name="email" className="rw-label" errorClassName="rw-label rw-label-error">
-          Email
-        </Label>
-        <TextField
-          name="email"
-          defaultValue={props.client?.email}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="email" className="rw-field-error" />
+          <label name="email">E-Mail</label>
+          <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values?.email} />
 
-        <Label name="phone" className="rw-label" errorClassName="rw-label rw-label-error">
-          Phone
-        </Label>
-        <TextField
-          name="phone"
-          defaultValue={props.client?.phone}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="phone" className="rw-field-error" />
+          <label name="phone">Phone</label>
+          <input type="phone" name="phone" onChange={handleChange} onBlur={handleBlur} value={values?.phone} />
 
-        <Label name="website" className="rw-label" errorClassName="rw-label rw-label-error">
-          Website
-        </Label>
-        <TextField
-          name="website"
-          defaultValue={props.client?.website}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="website" className="rw-field-error" />
+          <label name="website">Website</label>
+          <input type="url" name="website" onChange={handleChange} onBlur={handleBlur} value={values?.website} />
 
-        <Label name="vat" className="rw-label" errorClassName="rw-label rw-label-error">
-          Vat
-        </Label>
-        <NumberField
-          name="vat"
-          defaultValue={props.client?.vat}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="vat" className="rw-field-error" />
+          <label name="vat">VAT</label>
+          <input type="text" name="vat" onChange={handleChange} onBlur={handleBlur} value={values?.vat} />
 
-        <Label name="notes" className="rw-label" errorClassName="rw-label rw-label-error">
-          Notes
-        </Label>
-        <TextField
-          name="notes"
-          defaultValue={props.client?.notes}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-        <FieldError name="notes" className="rw-field-error" />
+          <label name="notes">Notes</label>
+          <textarea name="notes" onChange={handleChange} onBlur={handleBlur}>
+            {values?.notes}
+          </textarea>
 
-        <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+          <button type="submit" disabled={isSubmitting}>
             Save
-          </Submit>
-        </div>
-      </Form>
-    </div>
+          </button>
+        </form>
+      )}
+    </Formik>
   );
 };
 

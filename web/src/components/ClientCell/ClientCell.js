@@ -1,8 +1,9 @@
 import Client from 'src/components/Client';
+import LoadingSpinner from '../LoadingSpinner';
 
 export const QUERY = gql`
   query FIND_CLIENT_BY_ID($id: Int!) {
-    client: client(id: $id) {
+    clientDetails: clientDetails(id: $id) {
       id
       name
       address
@@ -17,10 +18,10 @@ export const QUERY = gql`
   }
 `;
 
-export const Loading = () => <div>Loading...</div>;
+export const Loading = () => <LoadingSpinner />;
 
 export const Empty = () => <div>Client not found</div>;
 
-export const Success = ({ client }) => {
+export const Success = ({ clientDetails: client }) => {
   return <Client client={client} />;
 };

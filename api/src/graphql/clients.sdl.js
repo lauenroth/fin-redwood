@@ -8,7 +8,7 @@ export const schema = gql`
     email: String
     phone: String
     website: String
-    vat: Int
+    vat: String
     notes: String
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -16,7 +16,7 @@ export const schema = gql`
 
   type Query {
     clients: [Client!]!
-    client(id: Int!): Client!
+    clientDetails(id: Int!): Client!
   }
 
   input CreateClientInput {
@@ -25,7 +25,7 @@ export const schema = gql`
     email: String
     phone: String
     website: String
-    vat: Int
+    vat: String
     notes: String
   }
 
@@ -35,7 +35,7 @@ export const schema = gql`
     email: String
     phone: String
     website: String
-    vat: Int
+    vat: String
     notes: String
     updatedAt: DateTime
   }

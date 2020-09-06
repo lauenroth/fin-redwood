@@ -1,9 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
+import { useAuth } from '@redwoodjs/auth';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MainNavigation from 'src/components/MainNavigation';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const MainLayout: React.FC<Props> = ({ children, title, hasPadding, hasBackButton }) => {
+  const { loading, isAuthenticated, logIn, logOut } = useAuth();
+
   const isTabletOrMobileDevice = useMediaQuery({
     query: '(max-device-width: 1224px)',
   });
@@ -40,6 +43,8 @@ const MainLayout: React.FC<Props> = ({ children, title, hasPadding, hasBackButto
             <MenuIcon />
           </IconButton>
           <h1>{title}</h1>
+
+          {!isAuthenticated && <Button onClick={logIn}>Sign in</Button>}
         </Toolbar>
       </AppBar>
 
@@ -71,11 +76,20 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
     padding-top: ${isMobile ? '56px' : '64px'};
     width: 100%;
 
+    .MuiToolbar-root button {
+      width: auto;
+    }
+
     main {
       margin: 0 auto;
       max-width: 1600px;
       padding: ${hasPadding ? '20px' : 0};
       width: 100%;
+
+      > h2 {
+        font-weight: normal;
+        font-size: 28px;
+      }
     }
 
     .back {

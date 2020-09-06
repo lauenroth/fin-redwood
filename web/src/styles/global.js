@@ -6,6 +6,7 @@ const GlobalCss = createGlobalStyle`
     *::before,
     *::after {
       box-sizing: inherit;
+      font-family: ${theme.font.family.mainFont};
       outline: none;
       text-rendering: optimizeLegibility;
       -moz-osx-font-smoothing: grayscale;
@@ -98,6 +99,38 @@ const GlobalCss = createGlobalStyle`
       label {
         color: #dbdbdb;
       }
+    }
+
+    .button,
+    button {
+      align-items: center;
+      background-color: #369;
+      border: 0;
+      border-radius: 4px;
+      color: #fff;
+      display: flex;
+      font-size: 18px;
+      height: 55px;
+      justify-content: center;
+      margin-bottom: 10px;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      font-family: ${theme.font.family.mainFont};
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 100%;
     }
   `}
 `;

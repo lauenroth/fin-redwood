@@ -1,5 +1,6 @@
 import { useMutation, useFlash } from '@redwoodjs/web';
 import { Link, routes, navigate } from '@redwoodjs/router';
+import styled from 'styled-components';
 
 const DELETE_CLIENT_MUTATION = gql`
   mutation DeleteClientMutation($id: Int!) {
@@ -26,63 +27,48 @@ const Client = ({ client }) => {
 
   return (
     <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Client {client.id} Detail</h2>
-        </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>id</th>
-              <td>{client.id}</td>
-            </tr>
-            <tr>
-              <th>name</th>
-              <td>{client.name}</td>
-            </tr>
-            <tr>
-              <th>address</th>
-              <td>{client.address}</td>
-            </tr>
-            <tr>
-              <th>email</th>
-              <td>{client.email}</td>
-            </tr>
-            <tr>
-              <th>phone</th>
-              <td>{client.phone}</td>
-            </tr>
-            <tr>
-              <th>website</th>
-              <td>{client.website}</td>
-            </tr>
-            <tr>
-              <th>vat</th>
-              <td>{client.vat}</td>
-            </tr>
-            <tr>
-              <th>notes</th>
-              <td>{client.notes}</td>
-            </tr>
-            <tr>
-              <th>createdAt</th>
-              <td>{client.createdAt}</td>
-            </tr>
-            <tr>
-              <th>updatedAt</th>
-              <td>{client.updatedAt}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <nav className="rw-button-group">
-        <Link to={routes.editClient({ id: client.id })} className="rw-button rw-button-blue">
-          Edit
-        </Link>
-        <a href="#" className="rw-button rw-button-red" onClick={() => onDeleteClick(client.id)}>
-          Delete
-        </a>
-      </nav>
+      <h2>{client.name}</h2>
+      {client.address && <address>{client.address}</address>}
+      <dl>
+        {client.email && (
+          <>
+            <dt>E-Mail:</dt>
+            <dd>{client.email}</dd>
+          </>
+        )}
+        {client.phone && (
+          <>
+            <dt>Phone:</dt>
+            <dd>{client.phone}</dd>
+          </>
+        )}
+        {client.website && (
+          <>
+            <dt>Website:</dt>
+            <dd>{client.website}</dd>
+          </>
+        )}
+        {client.vat && (
+          <>
+            <dt>VAT:</dt>
+            <dd>{client.vat}</dd>
+          </>
+        )}
+        {client.notes && (
+          <>
+            <dt>Notes:</dt>
+            <dd>
+              <pre>{client.notes}</pre>
+            </dd>
+          </>
+        )}
+      </dl>
+      <Link to={routes.editClient({ id: client.id })} className="button">
+        Edit
+      </Link>
+      {/* <a href="#" className="button" onClick={() => onDeleteClick(client.id)}>
+        Delete
+      </a> */}
     </>
   );
 };
