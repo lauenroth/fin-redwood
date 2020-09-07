@@ -20,7 +20,7 @@ const DashboardPage = () => {
 
   return (
     <MainLayout title="Dashboard" hasPadding>
-      <Finny>Welcome to Finny!</Finny>
+      <Finny>Welcome!</Finny>
 
       <SpeedDial
         ariaLabel="Sub menu"
@@ -49,6 +49,7 @@ const DashboardPage = () => {
 
 const Finny = styled.h1`
   font-family: Lobster, Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 `;
 
 export default DashboardPage;
