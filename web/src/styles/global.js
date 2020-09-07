@@ -87,6 +87,10 @@ const GlobalCss = createGlobalStyle`
       margin: 0 0 10px;
     }
 
+    pre {
+      margin: 0;
+    }
+
     .MuiDrawer-docked .MuiDrawer-paper,
     .MuiDrawer-modal .MuiDrawer-paper {
       background-color: rgba(45, 55, 72, 1);
@@ -183,6 +187,16 @@ const GlobalCss = createGlobalStyle`
       &:focus,
       &:active {
         background-color: rgb(250, 250, 250);
+      }
+    }
+
+    ${theme.mediaQuery.phone} {
+      dt {
+        flex-basis: 100%;
+        margin-bottom: 5px;
+      }
+      dd {
+        margin-bottom: 20px;
       }
     }
   `}

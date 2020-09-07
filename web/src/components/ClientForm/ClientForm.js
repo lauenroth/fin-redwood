@@ -14,48 +14,28 @@ const ClientForm = props => {
 
   return (
     <Formik initialValues={props.client} onSubmit={onSubmit}>
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting,
-        /* and other goodies */
-      }) => (
+      {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
-          {/* <FormError
-            error={props.error}
-            wrapperClassName="rw-form-error-wrapper"
-            titleClassName="rw-form-error-title"
-            listClassName="rw-form-error-list"
-          /> */}
-
           <label name="name">Name</label>
-          <input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values?.name} required />
+          <input type="text" name="name" onChange={handleChange} onBlur={handleBlur} value={values.name} required />
 
           <label name="address">Address</label>
-          <textarea name="address" onChange={handleChange} onBlur={handleBlur}>
-            {values?.address}
-          </textarea>
+          <textarea name="address" rows={4} onChange={handleChange} onBlur={handleBlur} value={values.address || ''} />
 
           <label name="email">E-Mail</label>
-          <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values?.email} />
+          <input type="email" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email || ''} />
 
           <label name="phone">Phone</label>
-          <input type="phone" name="phone" onChange={handleChange} onBlur={handleBlur} value={values?.phone} />
+          <input type="phone" name="phone" onChange={handleChange} onBlur={handleBlur} value={values.phone || ''} />
 
           <label name="website">Website</label>
-          <input type="url" name="website" onChange={handleChange} onBlur={handleBlur} value={values?.website} />
+          <input type="url" name="website" onChange={handleChange} onBlur={handleBlur} value={values.website || ''} />
 
           <label name="vat">VAT</label>
-          <input type="text" name="vat" onChange={handleChange} onBlur={handleBlur} value={values?.vat} />
+          <input type="text" name="vat" onChange={handleChange} onBlur={handleBlur} value={values.vat || ''} />
 
           <label name="notes">Notes</label>
-          <textarea name="notes" onChange={handleChange} onBlur={handleBlur}>
-            {values?.notes}
-          </textarea>
+          <textarea name="notes" rows={4} onChange={handleChange} onBlur={handleBlur} value={values.notes || ''} />
 
           <button type="submit" disabled={isSubmitting}>
             Save

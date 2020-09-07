@@ -39,6 +39,8 @@ export const Success = ({ clientDetails: client }) => {
   });
 
   const onSave = (input, id) => {
+    // remove empty properties
+    Object.keys(input).forEach(key => input[key] == null && delete input[key]);
     updateClient({ variables: { id, input } });
   };
 
