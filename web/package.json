@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "formik": "^2.1.5",
     "gotrue-js": "^0.9.26",
+    "lodash": "^4.17.20",
     "netlify-identity-widget": "^1.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

@@ -6,7 +6,8 @@ import TimeTrackingPage from 'src/pages/TimeTrackingPage/TimeTrackingPage';
 import TransactionsPage from 'src/pages/Transactions/TransactionsPage/TransactionsPage';
 import TransactionImportPage from 'src/pages/Transactions/TransactionImportPage/TransactionImportPage';
 import ClientsPage from 'src/pages/Clients/ClientsPage/ClientsPage';
-import NewInvoicePage from 'src/pages/Invoices/NewInvoice/NewInvoicePage';
+import NewInvoicePage from 'src/pages/Invoices/NewInvoicePage/NewInvoicePage';
+import InvoicePage from 'src/pages/Invoices/InvoicePage/InvoicePage';
 
 import NewTransactionPage from 'src/pages/Transactions/NewTransactionPage/NewTransactionPage';
 import EditTransactionPage from 'src/pages/Transactions/EditTransactionPage/EditTransactionPage';
@@ -18,6 +19,8 @@ import EditClientPage from 'src/pages/Clients/EditClientPage/EditClientPage';
 const Routes = () => {
   return (
     <Router>
+      <Route path="/invoices/{id:Int}/edit" page={EditInvoicePage} name="editInvoice" />
+      <Route path="/invoices/{id:Int}" page={InvoicePage} name="invoice" />
       <Route path="/transaction-import" page={TransactionImportPage} name="transactionImport" />
       <Route path="/transactions/new" page={NewTransactionPage} name="newTransaction" />
       <Route path="/transactions/{id:Int}/edit" page={EditTransactionPage} name="editTransaction" />

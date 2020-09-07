@@ -1,5 +1,3 @@
-// import { FieldError, TextField, NumberField, Submit } from '@redwoodjs/web';
-// import { TextField } from '@redwoodjs/forms';
 import { Formik } from 'formik';
 
 const ClientForm = props => {
