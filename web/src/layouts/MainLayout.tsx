@@ -89,6 +89,7 @@ const Wrapper = styled.div<{ isMobile: boolean; hasPadding: boolean }>`
       > h2 {
         font-weight: normal;
         font-size: 28px;
+        margin: 0 0 20px;
       }
     }
 

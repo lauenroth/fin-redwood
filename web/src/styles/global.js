@@ -66,6 +66,27 @@ const GlobalCss = createGlobalStyle`
       z-index: 1;
     }
 
+    a {
+      color: ${theme.colors.textPrimary};
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    dt {
+      flex-basis: 200px;
+      margin-bottom: 10px;
+    }
+    dd {
+      flex-basis: calc(100% - 200px);
+      margin: 0 0 10px;
+    }
+
     .MuiDrawer-docked .MuiDrawer-paper,
     .MuiDrawer-modal .MuiDrawer-paper {
       background-color: rgba(45, 55, 72, 1);
@@ -81,6 +102,10 @@ const GlobalCss = createGlobalStyle`
     .MuiListItemIcon-root .MuiDivider-root,
     .MuiDrawer-modal .MuiDivider-root {
       background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    address {
+      font-style: inherit;
     }
 
     form .MuiFormControl-root {
@@ -104,17 +129,37 @@ const GlobalCss = createGlobalStyle`
     .button,
     button {
       align-items: center;
-      background-color: #369;
+      background-color: rgba(51, 102, 153, 0.7);
       border: 0;
       border-radius: 4px;
       color: #fff;
+      cursor: pointer;
       display: flex;
       font-size: 18px;
       height: 55px;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       text-decoration: none;
+      transition: 0.2s background-color;
       width: 100%;
+
+      &:hover,
+      &:focus {
+        background-color: rgb(51, 102, 153);
+      }
+
+      &.danger {
+        background-color: rgba(221, 68, 68, 0.7);
+
+        &:hover,
+        &:focus {
+          background-color: rgb(221, 68, 68);
+        }
+      }
+    }
+
+    .danger {
+      background-color: rgb(221, 68, 68);
     }
 
     label {
@@ -124,13 +169,21 @@ const GlobalCss = createGlobalStyle`
 
     input,
     textarea {
+      background-color: rgba(250, 250, 250, 0.8);
       border: none;
       border-radius: 4px;
       font-size: 1em;
       font-family: ${theme.font.family.mainFont};
       margin-bottom: 20px;
       padding: 10px;
+      transition: 0.2s background-color;
       width: 100%;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: rgb(250, 250, 250);
+      }
     }
   `}
 `;
