@@ -191,8 +191,12 @@ const GlobalCss = createGlobalStyle`
     }
 
     body .MuiFormLabel-root {
-      color: #fff;
+      color: rgba(250, 250, 250, 0.8);
       transform: scale(0.75);
+
+      &.Mui-focused {
+        color: rgb(250, 250, 250);
+      }
     }
     body .MuiInputBase-input {
       padding: 15px;
@@ -200,6 +204,7 @@ const GlobalCss = createGlobalStyle`
 
     .MuiInput-root {
       background-color: rgba(250, 250, 250, 0.8);
+      border-radius: 4px;
       margin-bottom: 20px;
       width: 100%;
 
@@ -207,6 +212,10 @@ const GlobalCss = createGlobalStyle`
       &:focus,
       &:active {
         background-color: rgb(250, 250, 250);
+      }
+
+      &.Mui-focused::after {
+        border-bottom-color: #369;
       }
 
       > div {

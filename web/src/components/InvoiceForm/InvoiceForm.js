@@ -1,17 +1,23 @@
 import { Formik } from 'formik';
-import { Select, MenuItem, InputLabel, TextField } from '@material-ui/core';
+import { Select, MenuItem, InputLabel, TextField, FormLabel, Icon, FormControl } from '@material-ui/core';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 const InvoiceForm = props => {
   const onSubmit = data => {
-    props.onSave(data, props?.invoice?.id);
+    const invoice = { ...data };
+    console.log(invoice);
+    delete invoice.id;
+    delete invoice.createdAt;
+    delete invoice.updatedAt;
+    delete invoice.__typename;
+    props.onSave(invoice, data.id);
   };
 
   const { clients } = props;
-  console.log(clients);
 
   return (
     <Formik initialValues={props.invoice} onSubmit={onSubmit}>
-      {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+      {({ values, handleChange, handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
           <InputLabel id="clientId-label">Client</InputLabel>
           <Select id="clientId" labelId="clientId-label" value={values?.clientId} onChange={handleChange}>
@@ -22,15 +28,7 @@ const InvoiceForm = props => {
             ))}
           </Select>
 
-          <TextField
-            id="number"
-            label="Number"
-            type="text"
-            defaultValue="2020-0006"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+          <TextField id="number" label="Number" type="text" defaultValue="2020-0006" />
 
           <TextField
             id="date"
@@ -41,6 +39,12 @@ const InvoiceForm = props => {
               shrink: true,
             }}
           />
+
+          <FormControl>
+            <FormLabel>Items</FormLabel>
+
+            <AddBoxIcon style={{ alignSelf: 'flex-end' }} />
+          </FormControl>
 
           <button type="submit" disabled={isSubmitting}>
             Save
