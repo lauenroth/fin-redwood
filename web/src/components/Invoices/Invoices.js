@@ -1,113 +1,98 @@
-import { useMutation, useFlash } from '@redwoodjs/web';
-import { Link, routes } from '@redwoodjs/router';
+// import { useMutation, useFlash } from '@redwoodjs/web';
+import { navigate, routes } from '@redwoodjs/router';
+import styled, { css } from 'styled-components';
 
-const DELETE_INVOICE_MUTATION = gql`
-  mutation DeleteInvoiceMutation($id: Int!) {
-    deleteInvoice(id: $id) {
-      id
-    }
-  }
-`;
-
-const MAX_STRING_LENGTH = 150;
-
-const truncate = text => {
-  let output = text;
-  if (text && text.length > MAX_STRING_LENGTH) {
-    output = output.substring(0, MAX_STRING_LENGTH) + '...';
-  }
-  return output;
-};
-
-const jsonTruncate = obj => {
-  return truncate(JSON.stringify(obj, null, 2));
-};
-
-const timeTag = datetime => {
-  return (
-    <time dateTime={datetime} title={datetime}>
-      {new Date(datetime).toUTCString()}
-    </time>
-  );
-};
-
-const checkboxInputTag = checked => {
-  return <input type="checkbox" checked={checked} disabled />;
-};
+// const DELETE_INVOICE_MUTATION = gql`
+//   mutation DeleteInvoiceMutation($id: Int!) {
+//     deleteInvoice(id: $id) {
+//       id
+//     }
+//   }
+// `;
 
 const InvoicesList = ({ invoices }) => {
-  const { addMessage } = useFlash();
-  const [deleteInvoice] = useMutation(DELETE_INVOICE_MUTATION, {
-    onCompleted: () => {
-      addMessage('Invoice deleted.', { classes: 'rw-flash-success' });
-    },
-  });
+  // const { addMessage } = useFlash();
+  // const [deleteInvoice] = useMutation(DELETE_INVOICE_MUTATION, {
+  //   onCompleted: () => {
+  //     addMessage('Invoice deleted.', { classes: 'rw-flash-success' });
+  //   },
+  // });
 
-  const onDeleteClick = id => {
-    if (confirm('Are you sure you want to delete invoice ' + id + '?')) {
-      deleteInvoice({ variables: { id }, refetchQueries: ['INVOICES'] });
-    }
+  // const onDeleteClick = id => {
+  //   if (confirm('Are you sure you want to delete invoice ' + id + '?')) {
+  //     deleteInvoice({ variables: { id }, refetchQueries: ['INVOICES'] });
+  //   }
+  // };
+
+  const dateFormat = date => {
+    return date.substr(0, 10).split('-').reverse().join('.');
+  };
+
+  const image = client => {
+    if (client.name === 'Worldia') return 'worldia.png';
+    if (client.name === 'In The Pocket') return 'itp.png';
+    if (client.name === 'Init AG') return 'init.jpeg';
   };
 
   return (
-    <div className="rw-segment rw-table-wrapper-responsive">
-      <table className="rw-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Number</th>
-            <th>Date</th>
-            <th>Client id</th>
-            <th>Items</th>
-            <th>Total</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-            <th>&nbsp;</th>
-          </tr>
-        </thead>
-        <tbody>
-          {invoices.map(invoice => (
-            <tr key={invoice.id}>
-              <td>{truncate(invoice.id)}</td>
-              <td>{truncate(invoice.number)}</td>
-              <td>{timeTag(invoice.date)}</td>
-              <td>{truncate(invoice.clientId)}</td>
-              <td>{jsonTruncate(invoice.items)}</td>
-              <td>{truncate(invoice.total)}</td>
-              <td>{timeTag(invoice.createdAt)}</td>
-              <td>{timeTag(invoice.updatedAt)}</td>
-              <td>
-                <nav className="rw-table-actions">
-                  <Link
-                    to={routes.invoice({ id: invoice.id })}
-                    title={'Show invoice ' + invoice.id + ' detail'}
-                    className="rw-button rw-button-small"
-                  >
-                    Show
-                  </Link>
-                  <Link
-                    to={routes.editInvoice({ id: invoice.id })}
-                    title={'Edit invoice ' + invoice.id}
-                    className="rw-button rw-button-small rw-button-blue"
-                  >
-                    Edit
-                  </Link>
-                  <a
-                    href="#"
-                    title={'Delete invoice ' + invoice.id}
-                    className="rw-button rw-button-small rw-button-red"
-                    onClick={() => onDeleteClick(invoice.id)}
-                  >
-                    Delete
-                  </a>
-                </nav>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Invoices>
+      {invoices.map(invoice => (
+        <li key={invoice.id} onClick={() => navigate(routes.invoice({ id: invoice.id }))}>
+          <img src={`/images/clients/${image(invoice.client)}`} alt="" />
+          <div>
+            <h4>{invoice.client.name}</h4>
+            <Date>{dateFormat(invoice.date)}</Date>
+          </div>
+        </li>
+      ))}
+    </Invoices>
   );
 };
+
+const Invoices = styled.ul`
+  ${props => css`
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex;
+      list-style: none;
+      margin-bottom: 20px;
+
+      img {
+        border-radius: 50%;
+        height: 60px;
+        margin-right: 20px;
+        width: 60px;
+      }
+
+      div {
+        background-color: #fff;
+        border-radius: 4px;
+        color: ${props.theme.colors.backgroundSecondary};
+        display: flex;
+        height: 60px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 15px;
+        width: 100%;
+      }
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: normal;
+      margin: 0 0 2px;
+    }
+  `}
+`;
+
+const Date = styled.p`
+  ${props => css`
+    color: ${props.theme.colors.textSecondary};
+    font-size: 12px;
+    margin: 0;
+  `}
+`;
 
 export default InvoicesList;

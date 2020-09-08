@@ -5,22 +5,36 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 const InvoiceForm = props => {
   const onSubmit = data => {
     const invoice = { ...data };
+    invoice.date = new Date(invoice.date);
     console.log(invoice);
-    delete invoice.id;
-    delete invoice.createdAt;
-    delete invoice.updatedAt;
-    delete invoice.__typename;
+
     props.onSave(invoice, data.id);
   };
 
-  const { clients } = props;
+  const { clients, invoice } = props;
+  let initialValues = invoice;
+
+  if (initialValues) {
+    delete initialValues.id;
+    delete initialValues.createdAt;
+    delete initialValues.updatedAt;
+    delete initialValues.__typename;
+  } else {
+    initialValues = { clientId: '2', number: '2020-0006', date: '2020-09-01', total: 0.0 };
+  }
 
   return (
-    <Formik initialValues={props.invoice} onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {({ values, handleChange, handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit}>
           <InputLabel id="clientId-label">Client</InputLabel>
-          <Select id="clientId" labelId="clientId-label" value={values?.clientId} onChange={handleChange}>
+          <Select
+            id="clientId"
+            name="clientId"
+            labelId="clientId-label"
+            value={values?.clientId}
+            onChange={handleChange}
+          >
             {clients.map(client => (
               <MenuItem key={`client-${client.id}`} value={client.id}>
                 {client.name}
@@ -28,13 +42,22 @@ const InvoiceForm = props => {
             ))}
           </Select>
 
-          <TextField id="number" label="Number" type="text" defaultValue="2020-0006" />
+          <TextField
+            id="number"
+            name="number"
+            label="Number"
+            type="text"
+            defaultValue={values.number}
+            onChange={handleChange}
+          />
 
           <TextField
             id="date"
+            name="date"
             label="Date"
             type="date"
-            defaultValue="2020-09-01"
+            defaultValue={values.date}
+            onChange={handleChange}
             InputLabelProps={{
               shrink: true,
             }}

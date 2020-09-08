@@ -3,7 +3,7 @@ import InvoiceCell from 'src/components/InvoiceCell';
 
 const InvoicePage = ({ id }) => {
   return (
-    <MainLayout>
+    <MainLayout title="Invoice Details" hasBackButton hasPadding>
       <InvoiceCell id={id} />
     </MainLayout>
   );

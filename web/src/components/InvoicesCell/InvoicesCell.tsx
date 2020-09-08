@@ -9,11 +9,13 @@ export const QUERY = gql`
       id
       number
       date
-      clientId
-      items
       total
       createdAt
       updatedAt
+
+      client {
+        name
+      }
     }
   }
 `;
