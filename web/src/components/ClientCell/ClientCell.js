@@ -20,7 +20,7 @@ export const QUERY = gql`
 
 export const Loading = () => <LoadingSpinner />;
 
-export const Empty = () => <div>Client not found</div>;
+export const Empty = () => <NoData title="No Client yet" />;
 
 export const Success = ({ clientDetails: client }) => {
   return <Client client={client} />;

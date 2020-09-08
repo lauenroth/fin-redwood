@@ -1,8 +1,13 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { CircularProgress } from '@material-ui/core';
 
-const LoadingSpinner = ({ backgroundColor }) => (
-  <Wrapper backgroundColor={backgroundColor}>
+interface Props {
+  backgroundColor?: string;
+}
+
+const LoadingSpinner = (props: Props): React.ReactElement => (
+  <Wrapper backgroundColor={props.backgroundColor}>
     <CircularProgress />
   </Wrapper>
 );
