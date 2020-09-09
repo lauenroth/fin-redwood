@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Switch from '@material-ui/core/Switch';
 import MainLayout from 'src/layouts/MainLayout';
 import { useLocalStorage } from 'src/helpers/hooks';
-import { Select, MenuItem, InputLabel } from '@material-ui/core';
+import { Select, MenuItem, InputLabel, TextField, TextareaAutosize } from '@material-ui/core';
 
 const SettingsPage = () => {
   const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -48,6 +48,14 @@ const SettingsPage = () => {
             <MenuItem value="MM/DD/YYYY">12/31/2020</MenuItem>
             <MenuItem value="YYYY-MM-DD">2020-12-31</MenuItem>
           </Select>
+        </fieldset>
+        <fieldset>
+          <legend>Company Information</legend>
+          <TextField label="Company Name" />
+          <TextField label="Phone" />
+          <TextField label="Website" />
+          <TextField label="VAT" />
+          <TextareaAutosize />
         </fieldset>
       </Wrapper>
     </MainLayout>

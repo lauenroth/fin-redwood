@@ -41,10 +41,11 @@ model Transaction {
 
 model Invoice {
   id        Int       @id @default(autoincrement())
-  number    String    @unique
-  date      DateTime
   client    Client    @relation(fields: [clientId], references: [id])
   clientId  Int
+  number    String    @unique
+  date      DateTime
+  status    String
   items     Json?
   total     Float
   createdAt DateTime? @default(now())
