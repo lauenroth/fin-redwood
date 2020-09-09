@@ -6,6 +6,7 @@ export const schema = gql`
     client: Client!
     clientId: Int!
     items: JSON
+    status: String
     total: Float!
     createdAt: DateTime
     updatedAt: DateTime
@@ -21,6 +22,7 @@ export const schema = gql`
     date: DateTime!
     clientId: Int!
     items: JSON
+    status: String
     total: Float!
   }
 
@@ -29,6 +31,7 @@ export const schema = gql`
     date: DateTime
     clientId: Int
     items: JSON
+    status: String
     total: Float
   }
 

@@ -36,7 +36,7 @@ const InvoicesList = ({ invoices }) => {
       {invoices.map(invoice => (
         <li key={invoice.id} onClick={() => navigate(routes.invoice({ id: invoice.id }))}>
           <Status>
-            <span>Sent</span>
+            <span>{invoice.status}</span>
           </Status>
           <img src={`/images/clients/${image(invoice.client)}`} alt="" />
           <div>

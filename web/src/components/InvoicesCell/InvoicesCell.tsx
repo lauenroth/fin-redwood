@@ -9,6 +9,7 @@ export const QUERY = gql`
       id
       number
       date
+      status
       total
       createdAt
       updatedAt
