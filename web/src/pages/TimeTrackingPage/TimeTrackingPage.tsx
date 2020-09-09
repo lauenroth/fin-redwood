@@ -78,7 +78,6 @@ const Hours = styled.div<{ time?: number; isToday?: boolean }>`
     span {
       color: ${props.isToday ? '#549cfe' : '#79708c'};
       font-size: 0.9rem;
-      transform: rotate(-90deg);
     }
   `}
 `;
@@ -92,7 +91,6 @@ const Total = styled.div`
   font-size: 12px;
   height: 65px;
   justify-content: center;
-  /* margin: auto; */
   width: 65px;
 
   div {
