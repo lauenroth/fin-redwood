@@ -9,17 +9,18 @@ generator client {
 }
 
 model Client {
-  id        Int       @id @default(autoincrement())
-  name      String    @unique
-  address   String?
-  email     String?
-  phone     String?
-  website   String?
-  vat       String?
-  notes     String?
-  invoices  Invoice[]
-  createdAt DateTime? @default(now())
-  updatedAt DateTime? @default(now())
+  id           Int            @id @default(autoincrement())
+  name         String         @unique
+  address      String?
+  email        String?
+  phone        String?
+  website      String?
+  vat          String?
+  notes        String?
+  invoices     Invoice[]
+  createdAt    DateTime?      @default(now())
+  updatedAt    DateTime?      @default(now())
+  TimeTracking TimeTracking[]
 }
 
 model Transaction {
@@ -50,4 +51,13 @@ model Invoice {
   total     Float
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
+}
+
+model TimeTracking {
+  id        Int       @id @default(autoincrement())
+  client    Client    @relation(fields: [clientId], references: [id])
+  clientId  Int
+  date      DateTime
+  hours     Float
+  createdAt DateTime? @default(now())
 }
