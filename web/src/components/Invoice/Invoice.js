@@ -1,5 +1,7 @@
 import { useMutation, useFlash } from '@redwoodjs/web';
 import { Link, routes, navigate } from '@redwoodjs/router';
+import styled, { css } from 'styled-components';
+import TimeHelper from 'src/helpers/TimeHelper';
 
 const DELETE_INVOICE_MUTATION = gql`
   mutation DeleteInvoiceMutation($id: Int!) {
@@ -46,57 +48,50 @@ const Invoice = ({ invoice }) => {
 
   return (
     <>
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Invoice {invoice.id} Detail</h2>
-        </header>
-        <table className="rw-table">
-          <tbody>
-            <tr>
-              <th>Id</th>
-              <td>{invoice.id}</td>
-            </tr>
-            <tr>
-              <th>Number</th>
-              <td>{invoice.number}</td>
-            </tr>
-            <tr>
-              <th>Date</th>
-              <td>{timeTag(invoice.date)}</td>
-            </tr>
-            <tr>
-              <th>Client id</th>
-              <td>{invoice.clientId}</td>
-            </tr>
-            <tr>
-              <th>Items</th>
-              <td>{jsonDisplay(invoice.items)}</td>
-            </tr>
-            <tr>
-              <th>Total</th>
-              <td>{invoice.total}</td>
-            </tr>
-            <tr>
-              <th>Created at</th>
-              <td>{timeTag(invoice.createdAt)}</td>
-            </tr>
-            <tr>
-              <th>Updated at</th>
-              <td>{timeTag(invoice.updatedAt)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <Details>
+        <h4>{invoice.client.name}</h4>
+        <dl>
+          <dt>Number:</dt>
+          <dd>{invoice.number}</dd>
+          <dt>Date:</dt>
+          <dd>{TimeHelper.getDate(invoice.date)}</dd>
+        </dl>
+        {invoice.items && <p>{jsonDisplay(invoice.items)}</p>}
+        <Total>Total: {invoice.total} EUR</Total>
+      </Details>
       <nav className="rw-button-group">
-        <Link to={routes.editInvoice({ id: invoice.id })} className="rw-button rw-button-blue">
+        <Link to={routes.editInvoice({ id: invoice.id })} className="button">
           Edit
         </Link>
-        <a href="#" className="rw-button rw-button-red" onClick={() => onDeleteClick(invoice.id)}>
+        <a href="#" className="button danger" onClick={() => onDeleteClick(invoice.id)}>
           Delete
         </a>
       </nav>
     </>
   );
 };
+
+const Details = styled.section`
+  ${props => css`
+    background-color: #fff;
+    border-radius: 4px;
+    color: ${props.theme.colors.backgroundSecondary};
+    margin-bottom: 20px;
+    padding: 15px;
+
+    h4 {
+      font-size: 22px;
+      font-weight: normal;
+      margin: 0;
+    }
+  `}
+`;
+
+const Total = styled.p`
+  font-size: 22px;
+  margin: 0;
+  text-align: right;
+  width: 100%;
+`;
 
 export default Invoice;

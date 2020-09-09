@@ -1,6 +1,7 @@
 // import { useMutation, useFlash } from '@redwoodjs/web';
 import { navigate, routes } from '@redwoodjs/router';
 import styled, { css } from 'styled-components';
+import TimeHelper from 'src/helpers/TimeHelper';
 
 // const DELETE_INVOICE_MUTATION = gql`
 //   mutation DeleteInvoiceMutation($id: Int!) {
@@ -24,10 +25,6 @@ const InvoicesList = ({ invoices }) => {
   //   }
   // };
 
-  const dateFormat = date => {
-    return date.substr(0, 10).split('-').reverse().join('.');
-  };
-
   const image = client => {
     if (client.name === 'Worldia') return 'worldia.png';
     if (client.name === 'In The Pocket') return 'itp.png';
@@ -41,7 +38,7 @@ const InvoicesList = ({ invoices }) => {
           <img src={`/images/clients/${image(invoice.client)}`} alt="" />
           <div>
             <h4>{invoice.client.name}</h4>
-            <Date>{dateFormat(invoice.date)}</Date>
+            <Date>{TimeHelper.getDate(invoice.date)}</Date>
           </div>
         </li>
       ))}
@@ -55,32 +52,34 @@ const Invoices = styled.ul`
     padding: 0;
 
     li {
+      align-items: center;
+      background-color: #fff;
+      border-radius: 4px;
+      color: ${props.theme.colors.backgroundSecondary};
       display: flex;
       list-style: none;
       margin-bottom: 20px;
+      padding: 0 15px;
 
       img {
         border-radius: 50%;
-        height: 60px;
-        margin-right: 20px;
-        width: 60px;
+        height: 45px;
+        margin-right: 15px;
+        width: 45px;
       }
 
       div {
-        background-color: #fff;
-        border-radius: 4px;
-        color: ${props.theme.colors.backgroundSecondary};
         display: flex;
-        height: 60px;
+        height: 70px;
         flex-direction: column;
         justify-content: center;
-        padding: 0 15px;
+
         width: 100%;
       }
     }
 
     h4 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: normal;
       margin: 0 0 2px;
     }
