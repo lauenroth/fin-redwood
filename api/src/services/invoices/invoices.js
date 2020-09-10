@@ -1,7 +1,7 @@
 import { db } from 'src/lib/db';
 
 export const invoices = () => {
-  return db.invoice.findMany();
+  return db.invoice.findMany({ orderBy: { date: 'desc' } });
 };
 
 export const invoice = ({ id }) => {
