@@ -89,6 +89,7 @@ const GlobalCss = createGlobalStyle`
 
     pre {
       margin: 0;
+      white-space: pre-wrap;
     }
 
     .MuiDrawer-docked .MuiDrawer-paper,

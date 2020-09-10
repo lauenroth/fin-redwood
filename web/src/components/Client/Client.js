@@ -37,7 +37,9 @@ const Client = ({ client }) => {
   }, 0.0);
 
   if (totalBilled > 1000) {
-    totalBilled = `${floor(totalBilled / 1000)}k`;
+    totalBilled = `${floor(totalBilled / 1000)}k `;
+  } else {
+    totalBilled = floor(totalBilled);
   }
 
   return (
@@ -105,7 +107,7 @@ const Client = ({ client }) => {
         </li>
         <li>
           <h5>Billed</h5>
-          <p>{totalBilled}</p>
+          <p>{totalBilled}€</p>
         </li>
         <li>
           <h5>Time tracked</h5>
@@ -211,7 +213,7 @@ const Statistics = styled.ul`
     li {
       background-color: ${theme.colors.backgroundSecondary};
       border-radius: 4px;
-      padding: 15px;
+      padding: 13px;
       text-align: center;
     }
 
@@ -225,6 +227,7 @@ const Statistics = styled.ul`
     p {
       font-size: 28px;
       margin: 0;
+      white-space: nowrap;
     }
   `}
 `;
