@@ -2,6 +2,7 @@
 import { navigate, routes } from '@redwoodjs/router';
 import styled, { css } from 'styled-components';
 import TimeHelper from 'src/helpers/TimeHelper';
+import { Avatar } from '@material-ui/core';
 
 // const DELETE_INVOICE_MUTATION = gql`
 //   mutation DeleteInvoiceMutation($id: Int!) {
@@ -24,13 +25,6 @@ const InvoicesList = ({ invoices }) => {
   //     deleteInvoice({ variables: { id }, refetchQueries: ['INVOICES'] });
   //   }
   // };
-
-  const image = client => {
-    if (client.name === 'Worldia') return 'worldia.png';
-    if (client.name === 'In The Pocket') return 'itp.png';
-    if (client.name === 'Init AG') return 'init.jpeg';
-    if (client.name === 'Fujitsu Technology Solutions') return 'fujitsu.jpg';
-  };
 
   const statusColor = status => {
     switch (status.toLowerCase()) {
@@ -64,7 +58,7 @@ const InvoicesList = ({ invoices }) => {
             <Status color={statusColor(invoice.status)}>
               <span>{invoice.status}</span>
             </Status>
-            <img src={`/images/clients/${image(invoice.client)}`} alt="" />
+            <Avatar src={invoice.client.logo} />
             <div>
               <h4>{invoice.client.name}</h4>
               <Date>{TimeHelper.getDate(invoice.date)}</Date>
@@ -108,8 +102,7 @@ const Invoice = styled.li`
       }
     `}
 
-    img {
-      border-radius: 50%;
+    .MuiAvatar-root {
       height: 45px;
       margin-right: 15px;
       width: 45px;
