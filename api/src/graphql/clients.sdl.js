@@ -11,6 +11,7 @@ export const schema = gql`
     vat: String
     logo: String
     notes: String
+    invoices: [Invoice]
     createdAt: DateTime!
     updatedAt: DateTime!
   }

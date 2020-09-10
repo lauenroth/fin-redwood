@@ -15,6 +15,11 @@ export const QUERY = gql`
       notes
       createdAt
       updatedAt
+
+      invoices {
+        number
+        total
+      }
     }
   }
 `;

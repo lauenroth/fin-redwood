@@ -7,6 +7,9 @@ export const clients = () => {
 export const clientDetails = ({ id }) => {
   return db.client.findOne({
     where: { id },
+    include: {
+      invoices: true,
+    },
   });
 };
 

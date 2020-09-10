@@ -12,6 +12,7 @@ export const QUERY = gql`
       email
       phone
       website
+      logo
       vat
       notes
       createdAt

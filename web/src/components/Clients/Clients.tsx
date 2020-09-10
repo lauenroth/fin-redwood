@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import { Avatar } from '@material-ui/core';
 
 const ClientsList = ({ clients }) => {
   const letters = [];
@@ -33,6 +34,7 @@ const ClientsList = ({ clients }) => {
                   key={`client-${letter}-${client.id}`}
                   onClick={() => navigate(routes.client({ id: client.id }))}
                 >
+                  <Avatar src={client.logo} style={{ marginRight: '15px' }} />
                   <ListItemText primary={client.name} />
                 </ListItem>
               ))}
