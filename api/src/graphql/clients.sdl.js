@@ -9,6 +9,7 @@ export const schema = gql`
     phone: String
     website: String
     vat: String
+    logo: String
     notes: String
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -26,6 +27,7 @@ export const schema = gql`
     phone: String
     website: String
     vat: String
+    logo: String
     notes: String
   }
 
@@ -37,6 +39,7 @@ export const schema = gql`
     website: String
     vat: String
     notes: String
+    logo: String
     updatedAt: DateTime
   }
 

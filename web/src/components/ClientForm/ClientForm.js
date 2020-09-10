@@ -32,6 +32,9 @@ const ClientForm = props => {
           <label name="vat">VAT</label>
           <input type="text" name="vat" onChange={handleChange} onBlur={handleBlur} value={values.vat || ''} />
 
+          <label name="logo">Logo</label>
+          <input type="url" name="logo" onChange={handleChange} onBlur={handleBlur} value={values.logo || ''} />
+
           <label name="notes">Notes</label>
           <textarea name="notes" rows={4} onChange={handleChange} onBlur={handleBlur} value={values.notes || ''} />
 
