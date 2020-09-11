@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db';
+import ServiceHelper from 'src/helper/ServiceHelper';
 
 export const invoices = () => {
   return db.invoice.findMany({ orderBy: { date: 'desc' } });
@@ -12,7 +13,7 @@ export const invoice = ({ id }) => {
 
 export const createInvoice = ({ input }) => {
   return db.invoice.create({
-    data: foreignKeyReplacement(input),
+    data: ServiceHelper.foreignKeyReplacement(input),
   });
 };
 
@@ -31,18 +32,4 @@ export const deleteInvoice = ({ id }) => {
 
 export const Invoice = {
   client: (_obj, { root }) => db.invoice.findOne({ where: { id: root.id } }).client(),
-};
-
-const foreignKeyReplacement = input => {
-  let output = input;
-  const foreignKeys = Object.keys(input).filter(k => k.match(/Id$/));
-  foreignKeys.forEach(key => {
-    const modelName = key.replace(/Id$/, '');
-    const value = input[key];
-    delete output[key];
-    output = Object.assign(output, {
-      [modelName]: { connect: { id: value } },
-    });
-  });
-  return output;
 };

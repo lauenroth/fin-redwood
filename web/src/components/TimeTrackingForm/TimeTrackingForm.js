@@ -1,18 +1,30 @@
 import { Formik } from 'formik';
-import { Select, MenuItem, InputLabel, TextField, FormLabel, Icon, FormControl } from '@material-ui/core';
-import AddBoxIcon from '@material-ui/icons/AddBox';
+import { InputLabel, Select, MenuItem, Slider, TextField } from '@material-ui/core';
 
-const InvoiceForm = props => {
+const timeMarks = [
+  { value: 1, label: '' },
+  { value: 2, label: '2' },
+  { value: 3, label: '' },
+  { value: 4, label: '4' },
+  { value: 5, label: '' },
+  { value: 6, label: '6' },
+  { value: 7, label: '' },
+  { value: 8, label: '8' },
+  { value: 9, label: '' },
+  { value: 10, label: '10' },
+  { value: 11, label: '' },
+];
+
+const TimeTrackingForm = props => {
   const onSubmit = data => {
-    const invoice = { ...data };
-    invoice.date = new Date(invoice.date);
-    console.log(invoice);
-
-    props.onSave(invoice, data.id);
+    const timeTracking = { ...data };
+    timeTracking.date = new Date(timeTracking.date);
+    console.log(timeTracking);
+    props.onSave(timeTracking, props?.timeTracking?.id);
   };
 
-  const { clients, invoice } = props;
-  let initialValues = invoice;
+  const { clients, timeTracking } = props;
+  let initialValues = timeTracking;
 
   if (initialValues) {
     delete initialValues.id;
@@ -20,7 +32,7 @@ const InvoiceForm = props => {
     delete initialValues.updatedAt;
     delete initialValues.__typename;
   } else {
-    initialValues = { clientId: '2', number: '2020-0006', date: '2020-09-01', total: 0.0 };
+    initialValues = { clientId: '2', hours: 8, date: '2020-09-01' };
   }
 
   return (
@@ -30,6 +42,7 @@ const InvoiceForm = props => {
           <InputLabel id="clientId-label">Client</InputLabel>
           <Select
             id="clientId"
+            label="Client"
             name="clientId"
             labelId="clientId-label"
             value={values?.clientId}
@@ -43,15 +56,6 @@ const InvoiceForm = props => {
           </Select>
 
           <TextField
-            id="number"
-            name="number"
-            label="Number"
-            type="text"
-            defaultValue={values.number}
-            onChange={handleChange}
-          />
-
-          <TextField
             id="date"
             name="date"
             label="Date"
@@ -63,11 +67,20 @@ const InvoiceForm = props => {
             }}
           />
 
-          <FormControl>
-            <FormLabel>Items</FormLabel>
-
-            <AddBoxIcon style={{ alignSelf: 'flex-end' }} />
-          </FormControl>
+          <InputLabel id="hour-label">Hours</InputLabel>
+          <Slider
+            labelId="hours-label"
+            defaultValue={values.hours}
+            name="hours"
+            // getAriaValueText={valuetext}
+            aria-labelledby="discrete-slider"
+            valueLabelDisplay="auto"
+            step={1}
+            marks={timeMarks}
+            min={1}
+            max={11}
+            onChange={handleChange}
+          />
 
           <button type="submit" disabled={isSubmitting}>
             Save
@@ -78,4 +91,4 @@ const InvoiceForm = props => {
   );
 };
 
-export default InvoiceForm;
+export default TimeTrackingForm;

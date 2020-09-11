@@ -1,11 +1,15 @@
 import styled, { css } from 'styled-components';
+import { navigate, routes } from '@redwoodjs/router';
+import { Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 import Box from 'src/components/Box';
 import MainLayout from 'src/layouts/MainLayout';
+import TimeTrackingsCell from 'src/components/TimeTrackingsCell';
 
 const tracking = [6, 7, 7, 6, 5];
 const days = ['M', 'T', 'W', 'T', 'F'];
 
-const TimeTrackingPage = () => {
+const TimeTrackingPage = (): JSX.Element => {
   return (
     <MainLayout title="Time Tracking">
       <Box title="Week 22. - 26.6.">
@@ -26,6 +30,12 @@ const TimeTrackingPage = () => {
           </Total>
         </WeekWrapper>
       </Box>
+
+      <TimeTrackingsCell />
+
+      <Fab color="primary" onClick={() => navigate(routes.newTimeTracking())}>
+        <AddIcon />
+      </Fab>
     </MainLayout>
   );
 };
@@ -54,10 +64,10 @@ const Week = styled.ul`
 `;
 
 const Hours = styled.div<{ time?: number; isToday?: boolean }>`
-  ${props => css`
+  ${({ isToday, time, theme }) => css`
     align-items: flex-start;
     display: flex;
-    height: ${props.time * 13}px;
+    height: ${time * 13}px;
     justify-content: center;
     margin-bottom: 10px;
     min-height: 15px;
@@ -65,7 +75,7 @@ const Hours = styled.div<{ time?: number; isToday?: boolean }>`
     width: 6px;
 
     &::before {
-      background-color: ${props.isToday ? '#549cfe' : '#79708c'};
+      background-color: ${theme.colors[isToday ? 'primary' : 'disabled']};
       border-radius: 3px;
       content: '';
       height: calc(100% - 25px);
@@ -76,27 +86,29 @@ const Hours = styled.div<{ time?: number; isToday?: boolean }>`
     }
 
     span {
-      color: ${props.isToday ? '#549cfe' : '#79708c'};
+      color: ${theme.colors[isToday ? 'primary' : 'disabled']};
       font-size: 0.9rem;
     }
   `}
 `;
 
 const Total = styled.div`
-  align-items: center;
-  border: 3px solid #549cfe;
-  border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
-  height: 65px;
-  justify-content: center;
-  width: 65px;
+  ${props => css`
+    align-items: center;
+    border: 3px solid ${props.theme.colors.primary};
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    height: 65px;
+    justify-content: center;
+    width: 65px;
 
-  div {
-    font-size: 18px;
-    margin-bottom: 3px;
-  }
+    div {
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+  `}
 `;
 
 export default TimeTrackingPage;

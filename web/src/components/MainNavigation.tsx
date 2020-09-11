@@ -53,7 +53,7 @@ const MainNavigation: React.FC<Props> = ({ showNavigation, setShowNavigation }) 
           </ListItemIcon>
           <ListItemText primary="Transactions" />
         </ListItem>
-        <ListItem button onClick={event => handleChange(event, 'timeTracking')}>
+        <ListItem button onClick={event => handleChange(event, 'timeTrackings')}>
           <ListItemIcon>
             <TimerIcon />
           </ListItemIcon>

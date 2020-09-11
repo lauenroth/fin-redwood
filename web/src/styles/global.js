@@ -92,6 +92,13 @@ const GlobalCss = createGlobalStyle`
       white-space: pre-wrap;
     }
 
+    body .MuiSlider-root {
+      color: ${theme.colors.primary};
+    }
+    body .MuiSlider-markLabel {
+      color: inherit;
+    }
+
     .MuiDrawer-docked .MuiDrawer-paper,
     .MuiDrawer-modal .MuiDrawer-paper {
       background-color: rgba(45, 55, 72, 1);

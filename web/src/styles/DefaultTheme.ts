@@ -1,12 +1,14 @@
 export default {
   colors: {
-    primary: '#0090C6',
-    primaryDark: '#3f51b5',
+    primary: '#549cfe',
+    primaryDark: 'rgba(45, 55, 72, 0.6)',
     highlight: 'rgb(219, 1, 121)',
     highlightSoft: 'rgba(219, 1, 121, .2)',
     backgroundPrimary: '#1a202c',
     backgroundSecondary: 'rgba(45, 55, 72, 1)',
     backgroundTertinary: '#E9E9E9',
+
+    disabled: '#79708c',
 
     // lightGrey: '#E9E9E9',
     // grey: '#DFDFDF',
