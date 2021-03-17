@@ -10,6 +10,7 @@ export const schema = gql`
 
   type Query {
     timeTrackings: [TimeTracking!]!
+    timeTrackingsWeek: [TimeTracking!]!
     timeTracking(id: Int!): TimeTracking
   }
 
