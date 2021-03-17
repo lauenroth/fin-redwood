@@ -5,7 +5,7 @@ export const transactions = () => {
 };
 
 export const transaction = ({ id }) => {
-  return db.transaction.findOne({
+  return db.transaction.findUnique({
     where: { id },
   });
 };

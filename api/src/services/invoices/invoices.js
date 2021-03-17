@@ -6,7 +6,7 @@ export const invoices = () => {
 };
 
 export const invoice = ({ id }) => {
-  return db.invoice.findOne({
+  return db.invoice.findUnique({
     where: { id },
   });
 };
@@ -31,5 +31,5 @@ export const deleteInvoice = ({ id }) => {
 };
 
 export const Invoice = {
-  client: (_obj, { root }) => db.invoice.findOne({ where: { id: root.id } }).client(),
+  client: (_obj, { root }) => db.invoice.findUnique({ where: { id: root.id } }).client(),
 };

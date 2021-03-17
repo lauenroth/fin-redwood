@@ -5,8 +5,27 @@ export const timeTrackings = () => {
   return db.timeTracking.findMany({ orderBy: { date: 'desc' } });
 };
 
+export const timeTrackingsWeek = ({ from, to }) => {
+  return db.timeTracking.findMany({
+    where: {
+      AND: [
+        {
+          date: {
+            lte: to,
+          },
+        },
+        {
+          date: {
+            gte: from,
+          },
+        },
+      ],
+    },
+  });
+};
+
 export const timeTracking = ({ id }) => {
-  return db.timeTracking.findOne({
+  return db.timeTracking.findUnique({
     where: { id },
   });
 };
@@ -31,5 +50,5 @@ export const deleteTimeTracking = ({ id }) => {
 };
 
 export const TimeTracking = {
-  client: (_obj, { root }) => db.timeTracking.findOne({ where: { id: root.id } }).client(),
+  client: (_obj, { root }) => db.timeTracking.findUnique({ where: { id: root.id } }).client(),
 };

@@ -5,7 +5,7 @@ export const clients = () => {
 };
 
 export const clientDetails = ({ id }) => {
-  return db.client.findOne({
+  return db.client.findUnique({
     where: { id },
     include: {
       invoices: true,

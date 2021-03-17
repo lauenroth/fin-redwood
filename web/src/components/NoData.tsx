@@ -6,17 +6,6 @@ interface Props {
   children?: ReactNode;
 }
 
-const NoData: React.FC = (props: Props) => (
-  <Wrapper>
-    <img src="/images/undraw_no_data.svg" alt="" />
-    {props.title}
-  </Wrapper>
-);
-
-NoData.defaultProps = {
-  title: 'No data yet',
-};
-
 const Wrapper = styled.section`
   align-items: center;
   display: flex;
@@ -29,5 +18,16 @@ const Wrapper = styled.section`
     width: 40vw;
   }
 `;
+
+const NoData: React.FC<Props> = ({ title }) => (
+  <Wrapper>
+    <img src="/images/undraw_no_data.svg" alt="" />
+    {title}
+  </Wrapper>
+);
+
+NoData.defaultProps = {
+  title: 'No data yet',
+};
 
 export default NoData;
