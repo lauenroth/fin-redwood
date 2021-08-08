@@ -1,0 +1,180 @@
+type Client {
+  id: Int!
+  name: String!
+  address: String
+  email: String
+  phone: String
+  website: String
+  vat: String
+  logo: String
+  notes: String
+  invoices: [Invoice]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreateClientInput {
+  name: String!
+  address: String
+  email: String
+  phone: String
+  website: String
+  vat: String
+  logo: String
+  notes: String
+}
+
+input CreateInvoiceInput {
+  number: String!
+  date: DateTime!
+  clientId: Int!
+  items: JSON
+  status: String
+  total: Float!
+}
+
+input CreateTimeTrackingInput {
+  clientId: Int!
+  date: DateTime!
+  hours: Float!
+}
+
+input CreateTransactionInput {
+  date: DateTime!
+  payee: String!
+  amount: Float!
+  type: String
+  foreignAmount: Float
+  foreignCurrency: String
+  category: String
+  vat: String
+  reference: String
+  description: String
+  import: String
+  updatedAt: DateTime
+}
+
+scalar Date
+
+scalar DateTime
+
+type Invoice {
+  id: Int!
+  number: String!
+  date: DateTime!
+  client: Client!
+  clientId: Int!
+  items: JSON
+  status: String
+  total: Float!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+scalar JSON
+
+scalar JSONObject
+
+type Mutation {
+  createClient(input: CreateClientInput!): Client!
+  createInvoice(input: CreateInvoiceInput!): Invoice!
+  createTimeTracking(input: CreateTimeTrackingInput!): TimeTracking!
+  createTransaction(input: CreateTransactionInput!): Transaction!
+  deleteClient(id: Int!): Client!
+  deleteInvoice(id: Int!): Invoice!
+  deleteTimeTracking(id: Int!): TimeTracking!
+  deleteTransaction(id: Int!): Transaction!
+  updateClient(id: Int!, input: UpdateClientInput!): Client!
+  updateInvoice(id: Int!, input: UpdateInvoiceInput!): Invoice!
+  updateTimeTracking(id: Int!, input: UpdateTimeTrackingInput!): TimeTracking!
+  updateTransaction(id: Int!, input: UpdateTransactionInput!): Transaction!
+}
+
+type Query {
+  clientDetails(id: Int!): Client!
+  clients: [Client!]!
+  invoice(id: Int!): Invoice
+  invoices: [Invoice!]!
+  redwood: Redwood
+  timeTracking(id: Int!): TimeTracking
+  timeTrackings: [TimeTracking!]!
+  timeTrackingsWeek: [TimeTracking!]!
+  transaction(id: Int!): Transaction!
+  transactions: [Transaction!]!
+}
+
+type Redwood {
+  version: String
+  currentUser: JSON
+  prismaVersion: String
+}
+
+scalar Time
+
+type TimeTracking {
+  id: Int!
+  client: Client!
+  clientId: Int!
+  date: DateTime!
+  hours: Float!
+  createdAt: DateTime
+}
+
+type Transaction {
+  id: Int!
+  date: DateTime!
+  payee: String!
+  amount: Float!
+  type: String
+  foreignAmount: Float
+  foreignCurrency: String
+  category: String
+  vat: String
+  reference: String
+  description: String
+  import: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UpdateClientInput {
+  name: String
+  address: String
+  email: String
+  phone: String
+  website: String
+  vat: String
+  notes: String
+  logo: String
+  updatedAt: DateTime
+}
+
+input UpdateInvoiceInput {
+  number: String
+  date: DateTime
+  clientId: Int
+  items: JSON
+  status: String
+  total: Float
+}
+
+input UpdateTimeTrackingInput {
+  clientId: Int
+  date: DateTime
+  hours: Float
+}
+
+input UpdateTransactionInput {
+  date: DateTime
+  payee: String
+  amount: Float
+  type: String
+  foreignAmount: Float
+  foreignCurrency: String
+  category: String
+  vat: String
+  reference: String
+  description: String
+  import: String
+  updatedAt: DateTime
+}
