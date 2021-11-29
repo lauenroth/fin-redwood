@@ -12,7 +12,7 @@
     "@redwoodjs/auth": "^0.38.3",
     "@redwoodjs/router": "^0.38.3",
     "@redwoodjs/web": "^0.38.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "formik": "^2.2.8",
     "gotrue-js": "^0.9.29",
     "lodash": "^4.17.21",
